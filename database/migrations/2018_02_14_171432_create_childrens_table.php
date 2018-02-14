@@ -13,14 +13,15 @@ class CreateChildrensTable extends Migration
      */
     public function up()
     {
-	    Schema::create('childrens', function (Blueprint $table) {
+	    Schema::create( 'children', function ( Blueprint $table ) {
 	    	$table->increments('id');
 	    	$table->integer('parent_id')->unsigned();
 	    	$table->string('first_name');
 	    	$table->string('last_name');
 	    	$table->date('date_of_birth');
 	    	$table->enum('gender', ['male', 'female']);
-		    $table->foreign('parent_id')->references('id')->on('users');
+		    $table->timestamps();
+		    $table->foreign( 'parent_id' )->references( 'id' )->on( 'users' )->onDelete( 'cascade' );
 	    });
     }
 
@@ -32,6 +33,6 @@ class CreateChildrensTable extends Migration
     public function down()
     {
 
-	    Schema::dropIfExists('childrens');
+	    Schema::dropIfExists( 'children' );
     }
 }

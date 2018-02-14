@@ -12,10 +12,11 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
-        window.Laravel = <?php echo json_encode([
+        window.Laravel =; <?php echo json_encode( [
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>

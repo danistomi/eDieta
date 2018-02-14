@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Vacation;
 use Illuminate\Http\Request;
 
-class VaccationController extends Controller {
+class VacationController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -20,7 +21,7 @@ class VaccationController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
-		//
+
 	}
 
 	/**
@@ -31,7 +32,15 @@ class VaccationController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store( Request $request ) {
-		//
+		$vacation = new Vacation();
+
+		$vacation->child_id         = $request->child_id;
+		$vacation->vacation_type    = $request->vacation_type;
+		$vacation->date_of_vacation = $request->date_of_vacation;
+
+		$vacation->save();
+
+		return redirect( '/children/' . $request->child_id );
 	}
 
 	/**

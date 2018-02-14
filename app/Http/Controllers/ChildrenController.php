@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Child;
+use App\Vacation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ChildrenController extends Controller {
 	public function __construct() {
@@ -62,7 +64,9 @@ class ChildrenController extends Controller {
 	public function show( $id ) {
 		$child = Child::find( $id );
 
-		return view( 'children.index', compact( 'child' ) );
+		$vacations = $users = DB::select( 'SELECT * FROM vacations WHERE child_id = ?', [ $id ] );
+
+		return view( 'children.index', compact( 'child' ), compact( 'vacations' ) );
 	}
 
 	/**

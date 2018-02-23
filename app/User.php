@@ -17,8 +17,7 @@ class User extends Authenticatable {
 		'first_name',
 		'lase_name',
 		'username',
-		'email',
-		'role'
+		'email'
 	];
 
 	/**
@@ -30,4 +29,8 @@ class User extends Authenticatable {
 		'password',
 		'remember_token',
 	];
+
+	public function roles() {
+		return $this->belongsToMany( Role::class );
+	}
 }

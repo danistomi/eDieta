@@ -13,12 +13,13 @@ class UsersTableSeeder extends Seeder {
 	 */
 	public function run() {
 
-		$admin             = new User();
-		$admin->first_name = 'Tamás';
-		$admin->last_name  = 'Danis';
-		$admin->username   = 'danistomi';
-		$admin->email      = 'danistomi@gmail.com';
-		$admin->password   = bcrypt( 'secret' );
+		$admin                 = new User();
+		$admin->first_name     = 'Tamás';
+		$admin->last_name      = 'Danis';
+		$admin->username       = 'danistomi';
+		$admin->email          = 'danistomi@gmail.com';
+		$admin->password       = bcrypt( 'secret' );
+		$admin->remember_token = str_random( 10 );
 		$admin->save();
 
 		$role_admin = Role::where( 'name', 'admin' )->first();

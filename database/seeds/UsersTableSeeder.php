@@ -27,6 +27,7 @@ class UsersTableSeeder extends Seeder {
 
 		factory( User::class, 50 )->create()->each( function ( $user ) {
 			$role = Role::inRandomOrder()->first();
+			/** @var User $user */
 			$user->roles()->attach( $role );
 		} );
 	}

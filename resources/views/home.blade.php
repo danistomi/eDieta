@@ -9,6 +9,7 @@
 
                     <div class="panel-body">
 
+
                         @foreach($children as $child)
                             <div class="panel panel-default">
                                 <div class="panel-heading">

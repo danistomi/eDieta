@@ -13,15 +13,20 @@
 
 use Illuminate\Support\Facades\App;
 
-Route::get('/', function () {
-	return view( 'auth.login' );
-
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get( '/', 'HomeController@index' );
 
-Route::resource( 'children', 'ChildrenController' );
+Route::resource( 'children', 'ChildrenController', [
+	'except' => [
+		'index',
+		'create'
+	]
+] );
 
-Route::resource( 'vacation', 'VacationController' );
+Route::resource( 'vacation', 'VacationController', [
+	'except' => [
+		'index',
+		'create'
+	]
+] );

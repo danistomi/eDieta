@@ -2,8 +2,9 @@
 
 use App\Role;
 use App\User;
+use App\UserSettings;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
 
 class UsersTableSeeder extends Seeder {
 	/**
@@ -19,16 +20,26 @@ class UsersTableSeeder extends Seeder {
 		$admin->username       = 'danistomi';
 		$admin->email          = 'danistomi@gmail.com';
 		$admin->password       = bcrypt( 'secret' );
-		$admin->remember_token = str_random( 10 );
 		$admin->save();
 
 		$role_admin = Role::where( 'name', 'admin' )->first();
 		$admin->roles()->attach( $role_admin );
 
+		$settings                = new UserSettings();
+		$settings->site_language = Config::get( 'app.locale' );
+
+		$admin->settings()->save( $settings );
+
+
 		factory( User::class, 50 )->create()->each( function ( $user ) {
 			$role = Role::inRandomOrder()->first();
 			/** @var User $user */
 			$user->roles()->attach( $role );
+
+			$settings                = new UserSettings();
+			$settings->site_language = Config::get( 'app.locales' )[ array_rand( Config::get( 'app.locales' ) ) ];
+
+			$user->settings()->save( $settings );
 		} );
 	}
 }

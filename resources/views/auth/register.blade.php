@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row"><h3>Register</h3></div>
+        <div class="py-5 text-center"><h3>Register</h3></div>
         <div class="row">
             <div class="col"></div>
             <div class="col-6">

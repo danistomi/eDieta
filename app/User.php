@@ -39,6 +39,10 @@ class User extends Authenticatable {
 		return $this->belongsToMany( Role::class );
 	}
 
+	public function settings() {
+		return $this->hasOne( UserSettings::class );
+	}
+
 	/**
 	 * @param string|array $roles
 	 *

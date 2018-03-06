@@ -2,26 +2,30 @@
 
 @section('content')
     <div class="container">
+        <div class="py-5 text-left"><h2>@lang('app.dashboard')</h2></div>
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    My Children
+                </h4>
+                <ul class="list-group mb-3">
+                    @foreach($children as $child)
+                        <li class="list-group-item, d-flex justify-content-between children-list-groub-item">
+                            <div>
+                                <h6>{{ $child->fullName }}</h6>
+                                <small>{{ $child->date_of_birth }}</small>
+                            </div>
+                            <span class="text-muted">Age {{ $child->age }}</span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h1>Moje deti</h1></div>
-
-                    <div class="panel-body">
-
-
-                        @foreach($children as $child)
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <a href="{{ url('/children').'/'.$child->id }}"> {{ $child->fullName }}</a>
-                                </div>
-                                <div class="panel-body">
-                                    <b>Date of birht:</b> {{ $child->date_of_birth }} <br>
-                                    <b>Gender:</b> {{ $child->gender }}
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
                     <div class="panel-body">
                         <div class="panel panel-default">
                             <div class="panel-heading">

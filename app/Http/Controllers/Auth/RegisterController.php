@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
+use App\UserSettings;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -66,7 +69,12 @@ class RegisterController extends Controller {
 			'email'    => $data['email'],
 			'password' => bcrypt( $data['password'] ),
 		] );
+
+		$settings                = new UserSettings();
+		$settings->site_language = Session::has( 'applocale' ) ? Session::get( 'applocale' ) : Config::get( 'app.fallback_locale' );
+
 		$user->roles()->attach( Role::where( 'name', 'user' )->first() );
+		$user->settings()->save( $settings );
 
 		return $user;
 	}

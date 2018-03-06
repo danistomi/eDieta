@@ -11,11 +11,14 @@
 |
 */
 
-use Illuminate\Support\Facades\App;
+
+use Illuminate\Support\Facades\Redirect;
 
 Auth::routes();
 
 Route::get( '/', 'HomeController@index' );
+
+Route::get( 'lang/{lang}', [ 'as' => 'lang.switch', 'uses' => 'LanguageController@switchLang' ] );
 
 Route::resource( 'children', 'ChildrenController', [
 	'except' => [

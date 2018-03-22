@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Vacation;
+use App\Models\Vacation;
 use Illuminate\Http\Request;
 
 class VacationController extends Controller {

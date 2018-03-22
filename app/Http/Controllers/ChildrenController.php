@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Child;
+use App\Models\Child;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,7 +41,7 @@ class ChildrenController extends Controller {
 
 		$child->save();
 
-		return redirect( 'home' );
+		return redirect()->back();
 	}
 
 	/**

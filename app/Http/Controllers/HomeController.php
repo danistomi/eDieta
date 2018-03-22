@@ -12,6 +12,9 @@ class HomeController extends Controller {
 	 *
 	 * @return void
 	 */
+
+	private $defaultSection = 'vacation';
+
 	public function __construct() {
 		$this->middleware( 'auth' );
 	}
@@ -23,9 +26,37 @@ class HomeController extends Controller {
 	 */
 	public function index( Request $request ) {
 		//$request->user()->authorizeRoles('admin');
-		//$children = Child::all();
-		$children = Child::where( 'parent_id', Auth::user()->id )->get();
+		$children        = $this->getChildren();
+		$selectedChildId = $children[0]->id;
+		$section         = $this->defaultSection;
 
-		return view( 'home', compact( 'children' ) );
+		return view( 'home.home', compact( [
+			'children',
+			'selectedChildId',
+			'section'
+		] ) );
+	}
+
+	public function vacation( $childId ) {
+		$children        = $this->getChildren();
+		$selectedChildId = $childId;
+		$section         = 'vacation';
+
+		return view( 'home.vacation', compact( [
+			'children',
+			'selectedChildId',
+			'section'
+		] ) );
+	}
+
+	public function bmi( $childId ) {
+
+	}
+
+	/**
+	 * @return Child[]
+	 */
+	private function getChildren() {
+		return Child::where( 'parent_id', Auth::user()->id )->get();
 	}
 }

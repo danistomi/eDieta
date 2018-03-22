@@ -13,9 +13,16 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    {{--<link href="/css/app.css" rel="stylesheet">--}}
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+
+    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+    {{--<link rel="stylesheet" href="css/bootstrap-iso.css" />--}}
+
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css"/>
     <link href="/css/main.css" rel="stylesheet">
-    <link href="/css/bootsrap.min.css">
 
     <!-- Scripts -->
     <script>
@@ -94,6 +101,18 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/main.js"></script>
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+<script rel="js/main.js"></script>
 </body>
 </html>

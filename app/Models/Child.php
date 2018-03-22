@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 
 /**
- * @property mixed first_name
- * @property mixed last_name
+ * @property string first_name
+ * @property string last_name
+ * @property  int parent_id
+ * @property string date_of_birth
+ * @property string gender
  */
 class Child extends Model {
 

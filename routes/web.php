@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Redirect;
 Auth::routes();
 
 Route::get( '/', 'HomeController@index' );
+Route::get( '/vacation/{childId}', 'HomeController@vacation' )->where( 'childId', '[0-9]+' );
 
 Route::get( 'lang/{lang}', [ 'as' => 'lang.switch', 'uses' => 'LanguageController@switchLang' ] );
 
@@ -27,9 +28,9 @@ Route::resource( 'children', 'ChildrenController', [
 	]
 ] );
 
-Route::resource( 'vacation', 'VacationController', [
-	'except' => [
-		'index',
-		'create'
-	]
-] );
+//Route::resource( 'vacation', 'VacationController', [
+//	'except' => [
+//		'index',
+//		'create'
+//	]
+//] );

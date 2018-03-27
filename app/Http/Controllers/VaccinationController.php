@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vacation;
+use App\Models\Vaccination;
 use Illuminate\Http\Request;
 
-class VacationController extends Controller {
+class VaccinationController extends Controller {
 	public function __construct() {
 		$this->middleware( 'auth' );
 	}
@@ -18,15 +18,16 @@ class VacationController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store( Request $request ) {
-		$vacation = new Vacation();
+		$vacation = new Vaccination();
 
-		$vacation->child_id         = $request->child_id;
-		$vacation->vacation_type    = $request->vacation_type;
-		$vacation->date_of_vacation = $request->date_of_vacation;
+		$vacation->child_id            = $request->child_id;
+		$vacation->vaccination_type    = $request->vaccination_type;
+		$vacation->date_of_vaccination = $request->date_of_vaccination;
 
 		$vacation->save();
 
-		return redirect( '/children/' . $request->child_id );
+//		return redirect( '/children/' . $request->child_id );
+		return redirect()->back();
 	}
 
 	/**

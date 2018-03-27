@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Child;
+use App\Models\Vaccination;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,7 @@ class HomeController extends Controller {
 	 * @return void
 	 */
 
-	private $defaultSection = 'vacation';
+	private $defaultSection = 'vaccination';
 
 	public function __construct() {
 		$this->middleware( 'auth' );
@@ -26,26 +27,38 @@ class HomeController extends Controller {
 	 */
 	public function index( Request $request ) {
 		//$request->user()->authorizeRoles('admin');
-		$children        = $this->getChildren();
-		$selectedChildId = $children[0]->id;
-		$section         = $this->defaultSection;
 
-		return view( 'home.home', compact( [
-			'children',
-			'selectedChildId',
-			'section'
-		] ) );
+		$children        = $this->getChildren();
+		if ( $children->isEmpty() ) {
+			return view( 'home.noChild' );
+		}
+		$selectedChildId = $children[0]->id;
+
+//		$section         = $this->defaultSection;
+
+		return $this->vaccination( $selectedChildId );
+//
+//		return view( 'home.home', compact( [
+//			'children',
+//			'selectedChildId',
+//			'section'
+//		] ) );
 	}
 
-	public function vacation( $childId ) {
+	public function vaccination( $childId ) {
 		$children        = $this->getChildren();
-		$selectedChildId = $childId;
-		$section         = 'vacation';
+		if ( count( $children ) == 0 ) {
+			echo "<h1>asd</h1>";
+		}
+		$vaccinations  = Vaccination::where( 'child_id', $childId );
+		$selectedChild = $children[0];
+		$section       = 'vaccination';
 
-		return view( 'home.vacation', compact( [
+		return view( 'home.vaccination', compact( [
 			'children',
-			'selectedChildId',
-			'section'
+			'selectedChild',
+			'section',
+			'vaccinations'
 		] ) );
 	}
 

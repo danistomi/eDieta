@@ -9,10 +9,10 @@
                     My Children
                 </h4>
                 <ul class="list-group mb-3">
-                    @foreach($children as $child)
+                    @forelse($children as $child)
 
                         <li class="list-group-item, d-flex justify-content-between children-list-group-item
-                                @if($selectedChildId == $child->id)
+                                @if($selectedChild->id == $child->id)
                                 children-list-group-item-selected
                                 @endif ">
                             <div>
@@ -24,7 +24,9 @@
                             </div>
                             <nobr><span class="text-muted">Age {{ $child->age }}</span></nobr>
                         </li>
-                    @endforeach
+                    @empty
+                        valami
+                    @endforelse
                 </ul>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -34,10 +36,17 @@
                 </div>
             </div>
             <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="{{action('HomeController@vaccination', [$selectedChild->id])}}">Vacation</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{action('HomeController@bmi', [$selectedChild->id])}}">Bmi</a>
+                    </div>
+                </div>
                 @yield('section')
             </div>
 
         </div>
-    </div>
     </div>
 @endsection

@@ -28,7 +28,6 @@
                 </div>
                 <fieldset class="form-group">
                     <legend class="col-form-label">Gender</legend>
-                    {{--<div class="col-sm-10">--}}
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender"
                                id="male" value="male">
@@ -43,7 +42,6 @@
                             Female
                         </label>
                     </div>
-                    {{--</div>--}}
                 </fieldset>
                 <button type="submit" class="btn btn-primary">Send</button>
             </form>

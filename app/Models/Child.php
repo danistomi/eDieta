@@ -19,7 +19,7 @@ class Child extends Model {
 	 * Get the vacations for the child.
 	 */
 	public function vacations() {
-		return $this->hasMany( Vacation::class );
+		return $this->hasMany( Vaccination::class );
 	}
 
 	/**

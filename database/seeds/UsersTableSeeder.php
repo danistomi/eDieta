@@ -1,8 +1,8 @@
 <?php
 
-use App\Role;
-use App\User;
-use App\UserSettings;
+use App\Models\Role;
+use App\Models\User;
+use App\Models\UserSettings;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Config;
 

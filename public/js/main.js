@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var date_input = $('input[name="date_of_birth"]');
     var options = {
-        format: 'yyyy-dd-mm',
+        format: 'yyyy-mm-dd',
         todayHighlight: true,
         viewMode: 'years'
     };

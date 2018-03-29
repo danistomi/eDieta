@@ -35,7 +35,9 @@ Route::resource( 'vaccination', 'VaccinationController', [
 		'create'
 	]
 ] );
+Route::resource( 'admin', 'AdminController' );
 
 Auth::routes();
 
 Route::get( '/home', 'HomeController@index' );
+

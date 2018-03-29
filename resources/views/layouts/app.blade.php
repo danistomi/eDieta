@@ -71,6 +71,11 @@
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
+                            @if(Auth::user()->hasRole('admin'))
+                                <a class="dropdown-item" href="{{ url('/admin') }}">
+                                    Dashboard
+                                </a>
+                            @endif
                         </div>
                     </li>
                 @endif

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DefaultVaccinations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -105,9 +106,10 @@ class AdminController extends Controller {
 	}
 
 	private function showVaccinations() {
-		$nav = $this->getNavForPage( 'vaccinations' );
+		$nav          = $this->getNavForPage( 'vaccinations' );
+		$vaccinations = DefaultVaccinations::orderBy( 'recommended_min_month', 'asc' )->get();
 
-		return view( 'admin.vaccinations', compact( 'nav' ) );
+		return view( 'admin.vaccinations', compact( [ 'nav', 'vaccinations' ] ) );
 	}
 
 	private function getNavForPage( $page ) {

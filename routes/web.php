@@ -36,6 +36,13 @@ Route::resource( 'vaccination', 'VaccinationController', [
 	]
 ] );
 Route::resource( 'admin', 'AdminController' );
+Route::resource( 'vacc', 'DefaultVaccinationController', [
+	'only' => [
+		'store',
+		'update',
+		'destroy'
+	]
+] );
 
 Auth::routes();
 

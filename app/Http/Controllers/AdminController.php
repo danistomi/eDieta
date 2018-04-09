@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DefaultVaccinations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class AdminController extends Controller {
 
@@ -29,74 +30,20 @@ class AdminController extends Controller {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Display the specified sub page.
 	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create() {
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store( Request $request ) {
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
+	 * @param  string $page
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show( $page ) {
-		if ( ! \Illuminate\Support\Facades\View::exists( 'admin.' . $page ) ) {
+		if ( ! View::exists( 'admin.' . $page ) ) {
 			abort( 404, 'Page not found' );
 		}
 
 		$functionName = 'show' . ucfirst( $page );
 
 		return $this->$functionName();
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit( $id ) {
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update( Request $request, $id ) {
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy( $id ) {
-		//
 	}
 
 	private function showIndex() {
@@ -107,7 +54,7 @@ class AdminController extends Controller {
 
 	private function showVaccinations() {
 		$nav          = $this->getNavForPage( 'vaccinations' );
-		$vaccinations = DefaultVaccinations::orderBy( 'recommended_min_month', 'asc' )->get();
+		$vaccinations = DefaultVaccinations::orderBy( 'recommended_min_age', 'asc' )->get();
 
 		return view( 'admin.vaccinations', compact( [ 'nav', 'vaccinations' ] ) );
 	}

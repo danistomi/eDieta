@@ -18,14 +18,16 @@ class DefaultVaccinationController extends Controller {
 	public function store( Request $request ) {
 		Auth::user()->authorizeRoles( 'admin' );
 
-		$vaccination                        = new DefaultVaccinations();
-		$vaccination->name                  = $request->v_name;
-		$vaccination->recommended_min_month = (int) $request->min_month;
-		$vaccination->recommended_max_month = (int) $request->max_month;
-		$vaccination->type                  = $request->type;
-		$vaccination->immunization          = $request->immunization;
-		$vaccination->recommended           = $request->has( 'recommended' );
-		$vaccination->recurrent             = $request->has( 'recurrent' );
+		$vaccination                      = new DefaultVaccinations();
+		$vaccination->name                = $request->v_name;
+		$vaccination->recommended_min_age = (int) $request->min_age;
+		$vaccination->setRecommendedMinAgeRange( $request->min_age_range );
+		$vaccination->recommended_max_age = (int) $request->max_age;
+		$vaccination->setRecommendedMaxAgeRange( $request->max_age_range );
+		$vaccination->type         = $request->type;
+		$vaccination->immunization = $request->immunization;
+		$vaccination->recommended  = $request->has( 'recommended' );
+		$vaccination->recurrent    = $request->has( 'recurrent' );
 
 		$vaccination->save();
 

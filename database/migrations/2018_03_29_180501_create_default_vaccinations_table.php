@@ -14,8 +14,8 @@ class CreateDefaultVaccinationsTable extends Migration {
 		Schema::create( 'default_vaccinations', function ( Blueprint $table ) {
 			$table->increments( 'id' );
 			$table->string( 'name' );
-			$table->integer( 'recommended_min_month' )->unsigned();
-			$table->integer( 'recommended_max_month' )->unsigned();
+			$table->integer( 'recommended_min_age' )->unsigned();
+			$table->integer( 'recommended_max_age' )->unsigned()->nullable();
 			$table->string( 'type' );
 			$table->string( 'immunization' );
 			$table->boolean( 'recommended' );

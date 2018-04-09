@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\components\AgeConverter;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -30,8 +32,15 @@ class Child extends Model {
 	}
 
 	public function getAgeAttribute() {
-		$dt = Carbon::parse( $this->date_of_birth );
+		$birthday = new DateTime( $this->date_of_birth );
+		$diff     = $birthday->diff( new DateTime() );
+		$months   = $diff->format( '%m' ) + 12 * $diff->format( '%y' );
 
-		return Carbon::createFromDate( $dt->year, $dt->month, $dt->day )->age;
+		return AgeConverter::MonthsToFriendlyAge( $months );
+//		$dt = Carbon::parse( $this->date_of_birth );
+//
+//		return Carbon::createFromDate( $dt->year, $dt->month, $dt->day )->age;
+
+		//return AgeConverter::
 	}
 }

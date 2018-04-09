@@ -35,7 +35,12 @@ Route::resource( 'vaccination', 'VaccinationController', [
 		'create'
 	]
 ] );
-Route::resource( 'admin', 'AdminController' );
+Route::resource( 'admin', 'AdminController', [
+	'only' => [
+		'index',
+		'show'
+	]
+] );
 Route::resource( 'vacc', 'DefaultVaccinationController', [
 	'only' => [
 		'store',

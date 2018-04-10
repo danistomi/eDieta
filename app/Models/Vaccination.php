@@ -4,6 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property string name
+ * @property int recommended_min_age
+ * @property int recommended_max_age
+ * @property string type
+ * @property string immunization
+ * @property bool recommended
+ * @property bool recurrent
+ */
 class Vaccination extends Model {
 
 	protected $fillable = [

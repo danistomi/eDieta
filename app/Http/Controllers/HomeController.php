@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Child;
 use App\Models\Vaccination;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller {

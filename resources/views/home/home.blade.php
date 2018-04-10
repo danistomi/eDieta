@@ -44,7 +44,8 @@
             <div class="col-md-9">
                 <div class="row" style="background-color: #a1ceff; text-align: center">
                     <div class="col-md-6" style="font-weight: bold; color: white">
-                        <a style="color: white" href="{{action('HomeController@vaccination', [$selectedChild->id])}}">Vacation</a>
+                        <a style="color: white"
+                           href="{{action('HomeController@vaccination', [$selectedChild->id])}}">@lang('vaccination.vaccinations')</a>
                     </div>
                     <div class="col-md-6" style="background-color: white; font-weight: bold; color: #a1ceff">
                         <a style="color: #a1ceff" href="{{action('HomeController@bmi', [$selectedChild->id])}}">Bmi</a>

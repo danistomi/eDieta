@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\components\AgeConverter;
-use Carbon\Carbon;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,17 +10,28 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property string first_name
  * @property string last_name
- * @property  int parent_id
+ * @property int parent_id
  * @property string date_of_birth
  * @property string gender
+ * @property Vaccination vaccinations
  */
 class Child extends Model {
+
+	protected $fillable = [
+		'parent_id',
+		'first_name',
+		'last_name',
+		'date_of_birth',
+		'gender'
+	];
 
 	/**
 	 * Get the vacations for the child.
 	 */
-	public function vacations() {
-		return $this->hasMany( Vaccination::class );
+	public function vaccinations() {
+		return $this->belongsToMany( Vaccination::class )
+		            ->withPivot( 'done', 'date' )
+		            ->withTimestamps();
 	}
 
 	/**

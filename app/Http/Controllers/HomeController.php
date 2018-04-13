@@ -39,7 +39,7 @@ class HomeController extends Controller {
 		if ( count( $children ) == 0 ) {
 			echo "<h1>asd</h1>";
 		}
-		$vaccinations  = Vaccination::where( 'child_id', $childId );
+		$vaccinations  = Vaccination::where( 'recommended', true )->orderBy( 'recommended_min_age' )->get();
 		$selectedChild = null;
 		foreach ( $children as $child ) {
 			if ( $child->id == $childId ) {

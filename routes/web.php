@@ -29,12 +29,8 @@ Route::resource( 'children', 'ChildrenController', [
 	]
 ] );
 
-//Route::resource( 'vaccination', 'VaccinationController', [
-//	'except' => [
-//		'index',
-//		'create'
-//	]
-//] );
+Route::post( 'childrenVacc', 'ChildrenController@childrenVacc' );
+
 Route::resource( 'admin', 'AdminController', [
 	'only' => [
 		'index',

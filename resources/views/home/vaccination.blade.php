@@ -1,56 +1,42 @@
 @extends('home.home')
 
 @section('section')
-    {{--<div class="panel-body">--}}
-    {{--@forelse($vaccinations as $vaccination)--}}
-    {{--<div class="panel panel-default">--}}
-    {{--<div class="panel-heading">--}}
-    {{--{{ $vaccination->vacation_type }}--}}
-    {{--</div>--}}
-    {{--<div class="panel-body">--}}
-    {{--<b>Date:</b> {{ $vaccination->date_of_vacation }}--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--@empty--}}
-    {{--No Vacations.--}}
-    {{--@endforelse--}}
-    {{--</div>--}}
     <div class="panel-body mt-3">
-        <div class="panel panel-default">
+        @if($vaccinations)
             <table class="table table-striped table-responsive-lg">
                 <thead>
                 <tr>
-                    <th>Meno</th>
-                    <th>Vek</th>
-                    <th>Typ</th>
-                    <th>Povinné</th>
+                    <th>@lang('vaccination.name')</th>
+                    <th>@lang('vaccination.age')</th>
+                    <th>@lang('vaccination.type')</th>
+                    <th>@lang('vaccination.recommended')</th>
+                    <th></th>
                 </tr>
                 </thead>
-                <tr class="table-success">
-                    <td>Prvá</td>
-                    <td>3</td>
-                    <td>1. dávka (základné očkovanie)</td>
-                    <td>áno</td>
-                </tr>
-                <tr class="table-danger">
-                    <td>Druhá</td>
-                    <td>5</td>
-                    <td>2. dávka (základné očkovanie)</td>
-                    <td>áno</td>
-                </tr>
-                <tr class="table-warning">
-                    <td>Tretia</td>
-                    <td>11</td>
-                    <td>3. dávka (základné očkovanie)</td>
-                    <td>áno</td>
-                </tr>
-                <tr class="">
-                    <td>Štvrtá</td>
-                    <td>15-18</td>
-                    <td>základné očkovanie</td>
-                    <td>áno</td>
-                </tr>
+                @foreach($vaccinations as $vaccination)
+                    <tr class="table-{{ $vaccination->getStatus($selectedChild) }}">
+                        <td>{{ $vaccination->name }}</td>
+                        <td>{{ $vaccination->age }}</td>
+                        <td>{{ $vaccination->type }}</td>
+                        <td>{{ $vaccination->recommended }}</td>
+                        <td>
+                            <form method="POST" action="/childrenVacc">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="child_id" value="{{ $selectedChild->id }}">
+                                <input type="hidden" name="vaccination_id" value="{{ $vaccination->id }}">
+                                <button class="btn btn-primary">Ok</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
             </table>
+        @else
+            No Vaccinations.
+        @endif
+    </div>
+    <div class="panel-body mt-3">
+        <div class="panel panel-default">
+
             {{--<div class="panel-heading">--}}
             {{--<strong>Add new vacation</strong>--}}
             {{--</div>--}}

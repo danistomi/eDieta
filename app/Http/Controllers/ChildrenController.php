@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Child;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -90,5 +91,15 @@ class ChildrenController extends Controller {
 	 */
 	public function destroy( $id ) {
 		//
+	}
+
+	public function childrenVacc( Request $request ) {
+		$child = Child::findOrFail( $request->child_id );
+
+		$child->vaccinations()->attach( $request->vaccination_id, [ 'done' => true, 'date' => Carbon::now() ] );
+
+		//return $child;
+
+		return redirect()->back();
 	}
 }

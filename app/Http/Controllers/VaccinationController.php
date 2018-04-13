@@ -4,52 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Vaccination;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VaccinationController extends Controller {
 	public function __construct() {
 		$this->middleware( 'auth' );
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function store( Request $request ) {
-		$vacation = new Vaccination();
+		Auth::user()->authorizeRoles( 'admin' );
 
-		$vacation->child_id            = $request->child_id;
-		$vacation->vaccination_type    = $request->vaccination_type;
-		$vacation->date_of_vaccination = $request->date_of_vaccination;
+		$vaccination                      = new Vaccination();
+		$vaccination->name                = $request->v_name;
+		$vaccination->recommended_min_age = (int) $request->min_age;
+		$vaccination->setRecommendedMinAgeRange( $request->min_age_range );
+		$vaccination->recommended_max_age = (int) $request->max_age;
+		$vaccination->setRecommendedMaxAgeRange( $request->max_age_range );
+		$vaccination->type         = $request->type;
+		$vaccination->immunization = $request->immunization;
+		$vaccination->recommended  = $request->has( 'recommended' );
+		$vaccination->recurrent    = $request->has( 'recurrent' );
 
-		$vacation->save();
+		$vaccination->save();
 
-//		return redirect( '/children/' . $request->child_id );
 		return redirect()->back();
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show( $id ) {
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit( $id ) {
-		//
 	}
 
 	/**
@@ -61,7 +39,7 @@ class VaccinationController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update( Request $request, $id ) {
-		//
+		return redirect()->back();
 	}
 
 	/**
@@ -72,6 +50,9 @@ class VaccinationController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy( $id ) {
-		//
+		$vaccination = Vaccination::findOrFail( $id );
+		$vaccination->delete();
+
+		return redirect()->back();
 	}
 }

@@ -49,5 +49,5 @@
     </div>
 </div>
 <div class="">
-    <button id="add-child-button" class="float-right btn btn-primary">Add new Child</button>
+    <button id="add-child-button" class="float-right btn btn-primary">Nové dieťa</button>
 </div>

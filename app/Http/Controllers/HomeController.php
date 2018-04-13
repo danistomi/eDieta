@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Child;
 use App\Models\Vaccination;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller {
@@ -13,8 +12,6 @@ class HomeController extends Controller {
 	 *
 	 * @return void
 	 */
-
-	private $defaultSection = 'vaccination';
 
 	public function __construct() {
 		$this->middleware( 'auth' );
@@ -25,34 +22,31 @@ class HomeController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index( Request $request ) {
+	public function index() {
 		//$request->user()->authorizeRoles('admin');
 
-		$children        = $this->getChildren();
+		$children = $this->getChildren();
 		if ( $children->isEmpty() ) {
 			return view( 'home.noChild' );
 		}
 		$selectedChildId = $children[0]->id;
 
-//		$section         = $this->defaultSection;
-
 		return $this->vaccination( $selectedChildId );
-//
-//		return view( 'home.home', compact( [
-//			'children',
-//			'selectedChildId',
-//			'section'
-//		] ) );
 	}
 
 	public function vaccination( $childId ) {
-		$children        = $this->getChildren();
+		$children = $this->getChildren();
 		if ( count( $children ) == 0 ) {
 			echo "<h1>asd</h1>";
 		}
-		$vaccinations  = Vaccination::where( 'child_id', $childId );
-		$selectedChild = $children[0];
-		$section       = 'vaccination';
+		$vaccinations  = Vaccination::where( 'recommended', true )->orderBy( 'recommended_min_age' )->get();
+		$selectedChild = null;
+		foreach ( $children as $child ) {
+			if ( $child->id == $childId ) {
+				$selectedChild = $child;
+			}
+		}
+		$section = 'vaccination';
 
 		return view( 'home.vaccination', compact( [
 			'children',

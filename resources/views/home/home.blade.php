@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-3">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    My Children
+                    Moje deti
                 </h4>
                 <ul class="list-group mb-3">
                     @forelse($children as $child)
@@ -22,7 +22,13 @@
                                     <small>{{ $child->date_of_birth }}</small>
                                 </nobr>
                             </div>
-                            <nobr><span class="text-muted">Age {{ $child->age }}</span></nobr>
+                            <nobr>
+                                <span class="text-muted"> @if($child->age[1] === 'months')
+                                        @lang('user.age.months', ['age'=>$child->age[0]])
+                                    @else
+                                        @lang('user.age.years', ['age'=>$child->age[0]])
+                                    @endif </span>
+                            </nobr>
                         </li>
                     @empty
                         valami
@@ -36,12 +42,13 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="{{action('HomeController@vaccination', [$selectedChild->id])}}">Vacation</a>
+                <div class="row" style="background-color: #a1ceff; text-align: center">
+                    <div class="col-md-6" style="font-weight: bold; color: white">
+                        <a style="color: white"
+                           href="{{action('HomeController@vaccination', [$selectedChild->id])}}">@lang('vaccination.vaccinations')</a>
                     </div>
-                    <div class="col-md-6">
-                        <a href="{{action('HomeController@bmi', [$selectedChild->id])}}">Bmi</a>
+                    <div class="col-md-6" style="background-color: white; font-weight: bold; color: #a1ceff">
+                        <a style="color: #a1ceff" href="{{action('HomeController@bmi', [$selectedChild->id])}}">Bmi</a>
                     </div>
                 </div>
                 @yield('section')

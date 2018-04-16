@@ -59,3 +59,27 @@ legend {
     display: block;
     width: 100%;
 }
+
+.home-nav {
+    background-color: #a1ceff;
+    text-align: center;
+}
+
+.home-nav-item {
+    background-color: white;
+    font-weight: bold;
+}
+
+.home-nav-item-selected {
+    background-color: #a1ceff;
+}
+
+.home-nav-item-a {
+    font-weight: bold;
+    color: #a1ceff;
+}
+
+.home-nav-item-a-selected {
+    color: white;
+    font-weight: bold;
+}

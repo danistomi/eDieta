@@ -35,6 +35,13 @@ class Child extends Model {
 	}
 
 	/**
+	 * Get the bmi measurements for the child.
+	 */
+	public function bmis() {
+		return $this->hasMany( Bmi::class );
+	}
+
+	/**
 	 * @return string Returns with the full name
 	 */
 	public function getFullNameAttribute() {
@@ -47,10 +54,10 @@ class Child extends Model {
 		$months   = $diff->format( '%m' ) + 12 * $diff->format( '%y' );
 
 		return AgeConverter::MonthsToFriendlyAge( $months );
-//		$dt = Carbon::parse( $this->date_of_birth );
-//
-//		return Carbon::createFromDate( $dt->year, $dt->month, $dt->day )->age;
+	}
 
-		//return AgeConverter::
+	public function saveVaccination( $vaccinationId ) {
+
+
 	}
 }

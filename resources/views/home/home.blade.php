@@ -42,13 +42,19 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <div class="row" style="background-color: #a1ceff; text-align: center">
-                    <div class="col-md-6" style="font-weight: bold; color: white">
-                        <a style="color: white"
+                <div class="row home-nav">
+                    <div class="col-md-6 home-nav-item<?php /** @var string $section */
+		            if ( $section == 'vaccination' )
+			            echo "-selected" ?>">
+                        <a class="home-nav-item-a<?php if ( $section == 'vaccination' )
+				            echo "-selected" ?>"
                            href="{{action('HomeController@vaccination', [$selectedChild->id])}}">@lang('vaccination.vaccinations')</a>
                     </div>
-                    <div class="col-md-6" style="background-color: white; font-weight: bold; color: #a1ceff">
-                        <a style="color: #a1ceff" href="{{action('HomeController@bmi', [$selectedChild->id])}}">Bmi</a>
+                    <div class="col-md-6 home-nav-item<?php if ( $section == 'bmi' )
+			            echo "-selected" ?>">
+                        <a class="home-nav-item-a<?php if ( $section == 'bmi' )
+				            echo "-selected" ?>"
+                           href="{{action('HomeController@bmi', [$selectedChild->id])}}">@lang('bmi.bmi')</a>
                     </div>
                 </div>
                 @yield('section')

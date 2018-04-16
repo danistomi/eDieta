@@ -6,6 +6,7 @@ use App\Models\Child;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Psy\Exception\ErrorException;
 
 class ChildrenController extends Controller {
 	public function __construct() {
@@ -94,11 +95,22 @@ class ChildrenController extends Controller {
 	}
 
 	public function childrenVacc( Request $request ) {
-		$child = Child::findOrFail( $request->child_id );
+		/** @var Child $child */
+		$child   = Child::findOrFail( $request->child_id );
+		$vaccId  = $request->vaccination_id;
+		$hasVacc = $child->vaccinations()->where( 'vaccination_id', $vaccId )->exists();
 
-		$child->vaccinations()->attach( $request->vaccination_id, [ 'done' => true, 'date' => Carbon::now() ] );
-
-		//return $child;
+		if ( $hasVacc ) {
+			foreach ( $child->vaccinations as $vaccination ) {
+				if ( $vaccination->id == $vaccId ) {
+					$done = $vaccination->pivot->done;
+					$child->vaccinations()->updateExistingPivot( $vaccId, [ 'done' => ! $done ] );
+					break;
+				}
+			}
+		} else {
+			$child->vaccinations()->attach( $vaccId, [ 'done' => true, 'date' => Carbon::now() ] );
+		}
 
 		return redirect()->back();
 	}

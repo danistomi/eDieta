@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\View;
 
 class AdminController extends Controller {
 
-	private $nav = array(
+	private $adminNav = array(
 		'index'        => array( 'name' => 'Main', 'active' => false, 'icon' => 'home' ),
 		'vaccinations' => array( 'name' => 'Vaccinations', 'active' => false, 'icon' => 'list' ),
 	);
@@ -46,21 +46,21 @@ class AdminController extends Controller {
 	}
 
 	private function showIndex() {
-		$nav = $this->getNavForPage( 'index' );
+		$nav = $this->getAdminNavForPage( 'index' );
 
 		return view( 'admin.index', compact( 'nav' ) );
 	}
 
 	private function showVaccinations() {
-		$nav          = $this->getNavForPage( 'vaccinations' );
+		$nav          = $this->getAdminNavForPage( 'vaccinations' );
 		$vaccinations = Vaccination::orderBy( 'recommended_min_age', 'asc' )->get();
 
 		return view( 'admin.vaccinations', compact( [ 'nav', 'vaccinations' ] ) );
 	}
 
-	private function getNavForPage( $page ) {
-		$this->nav[ $page ]['active'] = true;
+	private function getAdminNavForPage( $page ) {
+		$this->adminNav[ $page ]['active'] = true;
 
-		return $this->nav;
+		return $this->adminNav;
 	}
 }

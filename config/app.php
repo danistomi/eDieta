@@ -64,7 +64,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'Europe/Budapest',//'UTC',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -191,7 +191,7 @@ return [
 	|
 	*/
 
-	'aliases' => [
+	'aliases'        => [
 
 		'App'          => Illuminate\Support\Facades\App::class,
 		'Artisan'      => Illuminate\Support\Facades\Artisan::class,
@@ -227,6 +227,7 @@ return [
 		'View'         => Illuminate\Support\Facades\View::class,
 
 	],
-	'locales' => [ 'en', 'sk' ],
+	'locales'        => [ 'en', 'sk' ],
+	'default_locale' => 'sk'
 
 ];

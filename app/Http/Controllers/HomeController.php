@@ -39,14 +39,18 @@ class HomeController extends Controller {
 		if ( count( $children ) == 0 ) {
 			echo "<h1>asd</h1>";
 		}
-		$vaccinations  = Vaccination::where( 'recommended', true )->orderBy( 'recommended_min_age' )->get();
+
+
 		$selectedChild = null;
 		foreach ( $children as $child ) {
 			if ( $child->id == $childId ) {
 				$selectedChild = $child;
 			}
 		}
+
 		$section = 'vaccination';
+
+		$vaccinations = Vaccination::where( 'recommended', true )->orderBy( 'recommended_min_age' )->get();
 
 		return view( 'home.vaccination', compact( [
 			'children',
@@ -57,7 +61,25 @@ class HomeController extends Controller {
 	}
 
 	public function bmi( $childId ) {
+		$children = $this->getChildren();
+		if ( count( $children ) == 0 ) {
+			echo "<h1>asd</h1>";
+		}
 
+		$selectedChild = null;
+		foreach ( $children as $child ) {
+			if ( $child->id == $childId ) {
+				$selectedChild = $child;
+			}
+		}
+
+		$section = 'bmi';
+
+		return view( 'home.bmi', compact( [
+			'children',
+			'selectedChild',
+			'section'
+		] ) );
 	}
 
 	/**

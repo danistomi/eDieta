@@ -13,6 +13,9 @@ class CreateBmisTable extends Migration {
 	public function up() {
 		Schema::create( 'bmis', function ( Blueprint $table ) {
 			$table->increments( 'id' );
+			$table->integer( 'child_id' )->unsigned();
+			$table->float( 'height' );
+			$table->float( 'weight' );
 			$table->timestamps();
 		} );
 	}

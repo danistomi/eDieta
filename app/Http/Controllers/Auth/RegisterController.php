@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Role;
-use App\User;
+use App\Models\User;
+use App\Models\Role;
 use App\Http\Controllers\Controller;
-use App\UserSettings;
+use App\Models\UserSettings;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -70,8 +70,12 @@ class RegisterController extends Controller {
 			'password' => bcrypt( $data['password'] ),
 		] );
 
-		$settings                = new UserSettings();
-		$settings->site_language = Session::has( 'applocale' ) ? Session::get( 'applocale' ) : Config::get( 'app.fallback_locale' );
+		$settings = new UserSettings();
+		if ( Config::get( 'app.default_locale' ) == '' ) {
+			$settings->site_language = Session::has( 'applocale' ) ? Session::get( 'applocale' ) : Config::get( 'app.fallback_locale' );
+		} else {
+			$settings->site_language = Config::get( 'app.locale' );
+		}
 
 		$user->roles()->attach( Role::where( 'name', 'user' )->first() );
 		$user->settings()->save( $settings );

@@ -19,6 +19,11 @@ class CreateChildVaccinationTable extends Migration {
 			$table->date( 'date' );
 			$table->timestamps();
 		} );
+
+		Schema::table( 'child_vaccination', function ( Blueprint $table ) {
+			$table->foreign( 'child_id' )->references( 'id' )->on( 'children' )->onDelete( 'cascade' );
+			$table->foreign( 'vaccination_id' )->references( 'id' )->on( 'vaccinations' )->onDelete( 'cascade' );
+		} );
 	}
 
 	/**

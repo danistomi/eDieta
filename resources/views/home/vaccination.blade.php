@@ -14,7 +14,8 @@
                 </tr>
                 </thead>
                 @foreach($vaccinations as $vaccination)
-                    <tr class="table-{{ $vaccination->getStatus($selectedChild) }}">
+		            <?php $vaccStatus = $vaccination->getStatus( $selectedChild ) ?>
+                    <tr class="table-{{ $vaccStatus }}">
                         <td>{{ $vaccination->name }}</td>
                         <td>{{ $vaccination->age }}</td>
                         <td>{{ $vaccination->type }}</td>
@@ -24,7 +25,7 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" name="child_id" value="{{ $selectedChild->id }}">
                                 <input type="hidden" name="vaccination_id" value="{{ $vaccination->id }}">
-                                <button class="btn btn-primary">Ok</button>
+                                <button class="btn btn-primary">@if($vaccStatus == 'success') @lang('vaccination.remove') @else @lang('vaccination.add') @endif</button>
                             </form>
                         </td>
                     </tr>

@@ -37,7 +37,12 @@ class UsersTableSeeder extends Seeder {
 			$user->roles()->attach( $role );
 
 			$settings                = new UserSettings();
-			$settings->site_language = Config::get( 'app.locales' )[ array_rand( Config::get( 'app.locales' ) ) ];
+			if ( Config::get( 'app.default_locale' ) == '' ) {
+				//$settings->site_language = Session::has( 'applocale' ) ? Session::get( 'applocale' ) : Config::get( 'app.fallback_locale' );
+				$settings->site_language = Config::get( 'app.locales' )[ array_rand( Config::get( 'app.locales' ) ) ];
+			} else {
+				$settings->site_language = Config::get( 'app.locale' );
+			}
 
 			$user->settings()->save( $settings );
 		} );

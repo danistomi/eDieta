@@ -43,17 +43,21 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="nav navbar-nav ml-auto">
                 @if (Auth::guest())
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            @lang('app.language') ({{ Config::get('languages')[App::getLocale()] }})
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @foreach(Config::get('languages') as $lang => $language)
-                                <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">{{ $language }}</a>
-                            @endforeach
-                        </div>
-                    </li>
+                    @if(Config::get('app.default_locale') == '')
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                               data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                @lang('app.language') ({{ Config::get('languages')[App::getLocale()] }})
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @foreach(Config::get('languages') as $lang => $language)
+                                    <a class="dropdown-item"
+                                       href="{{ route('lang.switch', $lang) }}">{{ $language }}</a>
+                                @endforeach
+                            </div>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/login') }}">@lang('app.login')</a>
                     </li>
@@ -73,7 +77,12 @@
                             </a>
                             @if(Auth::user()->hasRole('admin'))
                                 <a class="dropdown-item" href="{{ url('/admin') }}">
-                                    Dashboard
+                                    Dashboard @lang('surgery.surgery')
+                                </a>
+                            @endif
+                            @if(Auth::user()->hasRole('doctor'))
+                                <a class="dropdown-item" href="{{ url('/surgery') }}">
+                                    @lang('surgery.surgery')
                                 </a>
                             @endif
                         </div>

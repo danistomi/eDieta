@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\User;
 use App\Models\Vaccination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -11,6 +13,7 @@ class AdminController extends Controller {
 	private $adminNav = array(
 		'index'        => array( 'name' => 'Main', 'active' => false, 'icon' => 'home' ),
 		'vaccinations' => array( 'name' => 'Vaccinations', 'active' => false, 'icon' => 'list' ),
+		'doctors'      => array( 'name' => 'Doctors', 'active' => false, 'icon' => 'list' ),
 	);
 
 	public function __construct() {
@@ -56,6 +59,16 @@ class AdminController extends Controller {
 		$vaccinations = Vaccination::orderBy( 'recommended_min_age', 'asc' )->get();
 
 		return view( 'admin.vaccinations', compact( [ 'nav', 'vaccinations' ] ) );
+	}
+
+	private function showDoctors() {
+		$nav = $this->getAdminNavForPage( 'doctors' );
+
+		$doctors = User::whereHas( 'roles', function ( $q ) {
+			$q->where( 'name', 'doctor' );
+		} )->get();
+
+		return view( 'admin.doctors', compact( [ 'nav', 'doctors' ] ) );
 	}
 
 	private function getAdminNavForPage( $page ) {

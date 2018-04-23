@@ -15,8 +15,11 @@ class CreateSurgeriesTable extends Migration {
 			$table->increments( 'id' );
 			$table->integer( 'doctor_id' )->unique()->unsigned();
 			$table->string( 'name' )->unique();
-			$table->string( 'address' )->unique();
-			$table->string( 'properties' );
+			$table->string( 'address' );
+			$table->string( 'city' );
+			$table->integer( 'zip' );
+			$table->string( 'properties' )->nullable();
+			$table->boolean( 'verified' )->default( false );
 			$table->timestamps();
 		} );
 

@@ -47,20 +47,6 @@ class ChildrenController extends Controller {
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show( $id ) {
-		$child     = Child::findOrFail( $id );
-		$vacations = $child->vacations;
-
-		return view( 'children.index', compact( 'child' ), compact( 'vacations' ) );
-	}
-
-	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int $id

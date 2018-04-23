@@ -41,14 +41,12 @@ class HomeController extends Controller {
 		}
 
 
-		$selectedChild = null;
-		foreach ( $children as $child ) {
-			if ( $child->id == $childId ) {
-				$selectedChild = $child;
-			}
+		$selectedChild = $children->where( 'id', $childId );
+		if ( $selectedChild->isEmpty() ) {
+			return abort( 404 );
 		}
-
-		$section = 'vaccination';
+		$selectedChild = $selectedChild->first();
+		$section       = 'vaccination';
 
 		$vaccinations = Vaccination::where( 'recommended', true )->orderBy( 'recommended_min_age' )->get();
 
@@ -66,14 +64,12 @@ class HomeController extends Controller {
 			echo "<h1>asd</h1>";
 		}
 
-		$selectedChild = null;
-		foreach ( $children as $child ) {
-			if ( $child->id == $childId ) {
-				$selectedChild = $child;
-			}
+		$selectedChild = $children->where( 'id', $childId );
+		if ( $selectedChild->isEmpty() ) {
+			return abort( 404 );
 		}
-
-		$section = 'bmi';
+		$selectedChild = $selectedChild[0];
+		$section       = 'bmi';
 
 		return view( 'home.bmi', compact( [
 			'children',

@@ -55,9 +55,4 @@ class Child extends Model {
 
 		return AgeConverter::MonthsToFriendlyAge( $months );
 	}
-
-	public function saveVaccination( $vaccinationId ) {
-
-
-	}
 }

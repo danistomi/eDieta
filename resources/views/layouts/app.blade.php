@@ -33,7 +33,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">{{config('app.name', 'eDieťa')}}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -77,7 +77,7 @@
                             </a>
                             @if(Auth::user()->hasRole('admin'))
                                 <a class="dropdown-item" href="{{ url('/admin') }}">
-                                    Dashboard @lang('surgery.surgery')
+                                    Dashboard
                                 </a>
                             @endif
                             @if(Auth::user()->hasRole('doctor'))
@@ -104,6 +104,107 @@
     </div>
 </nav>
 @yield('content')
+
+<!--Footer-->
+<footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
+
+    <!--Footer Links-->
+    <div class="container text-center text-md-left">
+
+        <!-- Footer links -->
+        <div class="row text-center text-md-left mt-3 pb-3">
+
+            <!--First column-->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Company name</h6>
+                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.</p>
+            </div>
+            <!--/.First column-->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Second column-->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                <p><a href="#!">MDBootstrap</a></p>
+                <p><a href="#!">MDWordPress</a></p>
+                <p><a href="#!">BrandFlow</a></p>
+                <p><a href="#!">Bootstrap Angular</a></p>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Third column-->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+                <p><a href="#!">Your Account</a></p>
+                <p><a href="#!">Become an Affiliate</a></p>
+                <p><a href="{{ url('/newdoctor') }}">@lang('app.newDoctor')</a></p>
+                <p><a href="#!">Help</a></p>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Fourth column-->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                <p><i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
+                <p><i class="fa fa-envelope mr-3"></i> info@gmail.com</p>
+                <p><i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
+                <p><i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+            <!--/.Fourth column-->
+
+        </div>
+        <!-- Footer links -->
+
+        <hr>
+
+        <div class="row py-3 d-flex align-items-center">
+
+            <!--Grid column-->
+            <div class="col-md-8 col-lg-8">
+
+                <!--Copyright-->
+                <p class="text-center text-md-left grey-text">© 2018 Copyright: <a
+                            href="https://mdbootstrap.com/material-design-for-bootstrap/"><strong>
+                            MDBootstrap.com</strong></a></p>
+                <!--/.Copyright-->
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-4 col-lg-4 ml-lg-0">
+
+                <!--Social buttons-->
+                <div class="text-center text-md-right">
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i
+                                        class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i
+                                        class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i
+                                        class="fa fa-google-plus"></i></a></li>
+                        <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i
+                                        class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <!--/.Social buttons-->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+
+    </div>
+
+</footer>
+<!--/.Footer-->
+
 
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

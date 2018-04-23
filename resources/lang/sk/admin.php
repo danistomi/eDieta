@@ -1,5 +1,6 @@
 <?php
 
 return [
-	'vaccinations' => 'Očkovanie'
+	'vaccinations' => 'Očkovanie',
+	'doctors'      => 'Lekary'
 ];

@@ -29,7 +29,7 @@ class AdminController extends Controller {
 	public function index() {
 		Auth::user()->authorizeRoles( 'admin' );
 
-		Mail::to( User::where( 'id', 1 )->get()->first()->email )->send( new VaccinationNotification() );
+		//Mail::to( User::where( 'id', 1 )->get()->first()->email )->send( new VaccinationNotification() );
 
 		//return User::where( 'id', 1 )->get()->first();
 

@@ -1,5 +1,5 @@
 @extends('home.home')
 
 @section('section')
-    bmi
+    bmi test
 @endsection

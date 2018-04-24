@@ -4,8 +4,7 @@
     <div class="container">
         <div class="py-5 text-center"><h3>Login</h3></div>
         <div class="row">
-            <div class="col"></div>
-            <div class="col-4">
+            <div class="form-signin">
                 <form method="post" action="{{ url('/login') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -19,7 +18,7 @@
                         @endif
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-label-group">
                         <label for="password">Password</label>
                         <input name="password" type="password"
                                class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
@@ -41,7 +40,6 @@
                     </a>
                 </form>
             </div>
-            <div class="col"></div>
         </div>
     </div>
 @endsection

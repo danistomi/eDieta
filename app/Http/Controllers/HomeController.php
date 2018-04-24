@@ -68,7 +68,7 @@ class HomeController extends Controller {
 		if ( $selectedChild->isEmpty() ) {
 			return abort( 404 );
 		}
-		$selectedChild = $selectedChild[0];
+		$selectedChild = $selectedChild->first();
 		$section       = 'bmi';
 
 		return view( 'home.bmi', compact( [

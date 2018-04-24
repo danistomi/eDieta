@@ -84,9 +84,16 @@ legend {
     font-weight: bold;
 }
 
-.form-signin {
+.form-signin, .form-register {
     width: 100%;
-    max-width: 420px;
     padding: 15px;
     margin: auto;
+}
+
+.form-signin {
+    max-width: 420px;
+}
+
+.form-register {
+    max-width: 620px;
 }

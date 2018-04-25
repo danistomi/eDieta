@@ -47,6 +47,14 @@ Route::resource( 'vacc', 'VaccinationController', [
 	]
 ] );
 
+Route::resource( 'bmi', 'BmiController', [
+	'only' => [
+		'store',
+		'update',
+		'destroy'
+	]
+] );
+
 Auth::routes();
 
 Route::get( '/home', 'HomeController@index' );

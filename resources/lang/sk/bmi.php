@@ -1,4 +1,6 @@
 <?php
 return [
-	'bmi' => 'Bmi',
+	'bmi'    => 'Bmi',
+	'weight' => 'Váha',
+	'height' => 'Výška'
 ];

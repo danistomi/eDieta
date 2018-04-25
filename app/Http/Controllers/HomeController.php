@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bmi;
 use App\Models\Child;
 use App\Models\Vaccination;
 use Illuminate\Support\Facades\Auth;
@@ -70,11 +71,14 @@ class HomeController extends Controller {
 		}
 		$selectedChild = $selectedChild->first();
 		$section       = 'bmi';
+		$bmis          = Child::find( $childId )->bmis;
+
 
 		return view( 'home.bmi', compact( [
 			'children',
 			'selectedChild',
-			'section'
+			'section',
+			'bmis'
 		] ) );
 	}
 

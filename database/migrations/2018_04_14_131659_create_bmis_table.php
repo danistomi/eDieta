@@ -16,6 +16,7 @@ class CreateBmisTable extends Migration {
 			$table->integer( 'child_id' )->unsigned();
 			$table->float( 'height' );
 			$table->float( 'weight' );
+			$table->float( 'bmi' );
 			$table->timestamps();
 		} );
 	}

@@ -38,6 +38,9 @@
                     <a class="btn btn-link btn-block" href="{{ url('/password/reset') }}">
                         Forgot Your Password?
                     </a>
+                    <a class="btn btn-link btn-block" href="{{ url('/register') }}">
+                        Register an Account
+                    </a>
                 </form>
             </div>
         </div>

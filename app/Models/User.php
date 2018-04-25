@@ -39,6 +39,10 @@ class User extends Authenticatable {
 		return $this->belongsToMany( Role::class );
 	}
 
+	public function children() {
+		return $this->hasMany( Child::class, 'parent_id' );
+	}
+
 	public function settings() {
 		return $this->hasOne( UserSettings::class );
 	}
@@ -76,5 +80,9 @@ class User extends Authenticatable {
 	 */
 	public function hasRole( $role ) {
 		return null !== $this->roles()->where( 'name', $role )->first();
+	}
+
+	public function hasChild( $childId ) {
+		return null !== $this->children()->find( $childId );
 	}
 }

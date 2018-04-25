@@ -44,16 +44,16 @@
             <div class="col-md-9">
                 <div class="row home-nav">
                     <div class="col-md-6 home-nav-item<?php /** @var string $section */
-		            if ( $section == 'vaccination' )
-			            echo "-selected" ?>">
+                    if ( $section == 'vaccination' )
+	                    echo "-selected" ?>">
                         <a class="home-nav-item-a<?php if ( $section == 'vaccination' )
-				            echo "-selected" ?>"
+	                        echo "-selected" ?>"
                            href="{{action('HomeController@vaccination', [$selectedChild->id])}}">@lang('vaccination.vaccinations')</a>
                     </div>
                     <div class="col-md-6 home-nav-item<?php if ( $section == 'bmi' )
-			            echo "-selected" ?>">
+	                    echo "-selected" ?>">
                         <a class="home-nav-item-a<?php if ( $section == 'bmi' )
-				            echo "-selected" ?>"
+	                        echo "-selected" ?>"
                            href="{{action('HomeController@bmi', [$selectedChild->id])}}">@lang('bmi.bmi')</a>
                     </div>
                 </div>

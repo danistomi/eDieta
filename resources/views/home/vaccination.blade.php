@@ -1,7 +1,7 @@
 @extends('home.home')
 
 @section('section')
-    <div class="panel-body mt-3">
+    <div class=" col-md-12 mt-3">
         @if($vaccinations)
             <table class="table table-striped table-responsive-lg">
                 <thead>

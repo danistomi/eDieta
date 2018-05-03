@@ -30,6 +30,7 @@
                     <th>Header</th>
                 </tr>
                 </thead>
+                c
                 <tbody>
                 <tr>
                     <td>1,001</td>

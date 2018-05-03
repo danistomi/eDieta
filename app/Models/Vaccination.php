@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Components\AgeConverter;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -27,11 +28,15 @@ class Vaccination extends Model {
 	];
 
 	public function getAgeAttribute() {
+
 		if ( $this->recommended_max_age < $this->recommended_min_age ) {
-			return $this->recommended_min_age;
+			return AgeConverter::MonthsToFriendlyAge( $this->recommended_min_age );
 		}
 
-		return $this->recommended_min_age . ' - ' . $this->recommended_max_age;
+		return [
+			AgeConverter::MonthsToFriendlyAge( $this->recommended_min_age ),
+			AgeConverter::MonthsToFriendlyAge( $this->recommended_max_age )
+		];
 	}
 
 	public function setRecommendedMinAgeRange( $attr ) {
@@ -56,11 +61,18 @@ class Vaccination extends Model {
 			}
 		}
 
-		if ( $this->recommended_min_age + 1 <= $childAge ) {
-			return 'danger';
+		if ( $this->recommended_max_age != null ) {
+			$max = $this->recommended_max_age;
+			if ( $childAge > $max ) {
+				return 'danger';
+			}
+		} else {
+			if ( $childAge > $this->recommended_min_age ) {
+				return 'danger';
+			}
 		}
 
-		if ( $this->recommended_min_age <= $childAge + 1 ) {
+		if ( $childAge >= $this->recommended_min_age - 1 ) {
 			return 'warning';
 		}
 

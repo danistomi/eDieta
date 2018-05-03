@@ -5,5 +5,7 @@ return [
 	'login'     => 'Prihlasenie',
 	'register'  => 'Registracia',
 	'dashboard' => 'Ovládací panel',
-	'newDoctor' => 'Chcem byt lekarom'
+	'newDoctor' => 'Chcem byt lekarom',
+	'save'      => 'Uložiť',
+	'update'    => 'Aktualizovať'
 ];

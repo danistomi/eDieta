@@ -23,11 +23,10 @@
                                 </nobr>
                             </div>
                             <nobr>
-                                <span class="text-muted"> @if($child->age[1] === 'months')
-                                        @lang('user.age.months', ['age'=>$child->age[0]])
-                                    @else
-                                        @lang('user.age.years', ['age'=>$child->age[0]])
-                                    @endif </span>
+                                <span class="text-muted">
+                                    @lang('user.age.age')
+                                    : {{ trans_choice('user.age.'.$child->age[1],floor($child->age[0]), ['age'=> $child->age[0]]) }}
+                                </span>
                             </nobr>
                         </li>
                     @empty

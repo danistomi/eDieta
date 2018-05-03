@@ -49,9 +49,9 @@ return [
         ],
 
         'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'visibility' => 'public',
+	        'driver'     => 'local',
+	        'root'       => storage_path( 'app/web' ),
+	        'visibility' => 'public',
         ],
 
         's3' => [

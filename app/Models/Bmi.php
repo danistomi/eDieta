@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
 
@@ -9,7 +11,8 @@ use InvalidArgumentException;
  * @property float weight
  * @property float height
  * @property mixed bmi
- * @property mixed child_id
+ * @property integer child_id
+ * @property datetime created_at
  */
 class Bmi extends Model {
 
@@ -31,12 +34,19 @@ class Bmi extends Model {
 
 	}
 
-	public function getBmiAttribute( $bmi ) {
-		if ( $bmi == null || $bmi == 0 ) {
-			$this->updateBmi();
-		}
+//	public function getBmiAttribute( $bmi ) {
+//		if ( $bmi == null || $bmi == 0 ) {
+//			$this->updateBmi();
+//		}
+//
+//		return $this->getCalculatedBmi();
+//	}
 
-		return $this->getCalculatedBmi();
+	public function getChildAgeAttribute() {
+		$birthday = new DateTime( $this->child->date_of_birth );
+		$diff     = $birthday->diff( new DateTime( $this->created_at ) );
+
+		return (int) ( $diff->format( '%m' ) ) + 12 * $diff->format( '%y' );
 	}
 
 	private function getCalculatedBmi() {

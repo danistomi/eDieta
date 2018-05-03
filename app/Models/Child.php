@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\components\AgeConverter;
+use App\Components\AgeConverter;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
@@ -51,7 +51,7 @@ class Child extends Model {
 	public function getAgeAttribute() {
 		$birthday = new DateTime( $this->date_of_birth );
 		$diff     = $birthday->diff( new DateTime() );
-		$months   = $diff->format( '%m' ) + 12 * $diff->format( '%y' );
+		$months   = (int) ( $diff->format( '%m' ) ) + 12 * $diff->format( '%y' );
 
 		return AgeConverter::MonthsToFriendlyAge( $months );
 	}

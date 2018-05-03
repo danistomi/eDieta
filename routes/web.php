@@ -32,6 +32,8 @@ Route::resource( 'children', 'ChildrenController', [
 
 Route::post( 'childrenVacc', 'ChildrenController@childrenVacc' );
 Route::post( 'create_ambulance', 'DoctorController@createAmbulance' );
+Route::post( '/getVaccinationForm', 'AjaxController@getVaccinationForm' );
+Route::post( 'uploadBmiData', 'AdminController@storeBmiFile' )->name( 'admin.bmi' );
 
 Route::resource( 'admin', 'AdminController', [
 	'only' => [

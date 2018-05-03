@@ -18,6 +18,7 @@ class CreateBmisTable extends Migration {
 			$table->float( 'weight' );
 			$table->float( 'bmi' );
 			$table->timestamps();
+			$table->foreign( 'child_id' )->references( 'id' )->on( 'children' )->onDelete( 'cascade' );
 		} );
 	}
 

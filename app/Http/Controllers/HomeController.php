@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bmi;
 use App\Models\Child;
 use App\Models\Vaccination;
 use Illuminate\Support\Facades\Auth;
@@ -71,14 +70,20 @@ class HomeController extends Controller {
 		}
 		$selectedChild = $selectedChild->first();
 		$section       = 'bmi';
-		$bmis          = Child::find( $childId )->bmis;
+		$bmis          = Child::find( $childId )->bmis()->orderBy( 'created_at', 'ASC' )->get();
+		$bmiChartData  = array();
+		foreach ( $bmis as $bmi ) {
+			array_push( $bmiChartData, [ 'age' => $bmi->childAge, 'bmi' => $bmi->bmi ] );
+		}
 
+		$bmis = Child::find( $childId )->bmis()->orderBy( 'created_at', 'DESC' )->paginate( 10 );
 
 		return view( 'home.bmi', compact( [
 			'children',
 			'selectedChild',
 			'section',
-			'bmis'
+			'bmis',
+			'bmiChartData'
 		] ) );
 	}
 

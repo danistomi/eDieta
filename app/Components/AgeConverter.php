@@ -1,6 +1,6 @@
 <?php
 
-namespace App\components;
+namespace App\Components;
 
 class AgeConverter {
 	/**
@@ -8,7 +8,7 @@ class AgeConverter {
 	 *
 	 * @return float|int
 	 */
-	public static function YearsToMoths( $years ) {
+	public static function yearsToMoths( $years ) {
 		return $years * 12;
 	}
 
@@ -17,7 +17,7 @@ class AgeConverter {
 	 *
 	 * @return int
 	 */
-	public static function MonthsToYears( $months ) {
+	public static function monthsToYears( $months ) {
 		return (int) ( $months / 12 );
 	}
 
@@ -34,6 +34,6 @@ class AgeConverter {
 			return [ $months / 12, 'years' ];
 		}
 
-		return [ AgeConverter::MonthsToYears( $months ), 'years' ];
+		return [ AgeConverter::monthsToYears( $months ), 'years' ];
 	}
 }

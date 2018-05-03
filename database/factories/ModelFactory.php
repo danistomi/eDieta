@@ -24,7 +24,7 @@ $factory->define( App\Models\User::class, function ( Faker\Generator $faker ) {
 	];
 } );
 
-$factory->define( \App\Models\Child::class, function ( Faker\Generator $faker ) {
+$factory->define( App\Models\Child::class, function ( Faker\Generator $faker ) {
 	return [
 		'parent_id'     => 1,
 		'first_name'    => $faker->firstName,

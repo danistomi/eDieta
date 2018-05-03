@@ -227,7 +227,14 @@
 <!-- Bootstrap Date-Picker Plugin -->
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
+<script type="text/javascript">
+    var bmiData = null;
+    @if(isset($bmiChartData))
+        bmiData = {!!  json_encode($bmiChartData)  !!};
+    @endif
+</script>
 <script rel="js/main.js"></script>
 </body>
 </html>

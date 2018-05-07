@@ -1,4 +1,4 @@
 <?php
 return [
-	'date' => 'Dátum'
+	'date' => 'Dátum',
 ];

@@ -141,7 +141,7 @@
                 <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
                 <p><a href="#!">Your Account</a></p>
                 <p><a href="#!">Become an Affiliate</a></p>
-                <p><a href="{{ url('/newdoctor') }}">@lang('app.newDoctor')</a></p>
+                <p><a href="{{ url('/new_surgery') }}">@lang('app.newSurgery')</a></p>
                 <p><a href="#!">Help</a></p>
             </div>
             <!--/.Third column-->

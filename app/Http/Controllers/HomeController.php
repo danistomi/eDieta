@@ -27,6 +27,7 @@ class HomeController extends Controller {
 
 		$children = $this->getChildren();
 		if ( $children->isEmpty() ) {
+			//TODO noChild design
 			return view( 'home.noChild' );
 		}
 		$selectedChildId = $children[0]->id;

@@ -25,6 +25,7 @@ class CreateSurgeriesTable extends Migration {
 
 		Schema::table( 'surgeries', function ( Blueprint $table ) {
 			$table->foreign( 'doctor_id' )->references( 'id' )->on( 'users' )->onDelete( 'cascade' );
+			$table->unique( [ 'address', 'city', 'zip' ] );
 		} );
 	}
 

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBmiFile;
 use App\Mail\VaccinationNotification;
+use App\Models\Surgery;
 use App\Models\User;
 use App\Models\Vaccination;
 use Faker\Provider\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
@@ -49,6 +52,8 @@ class AdminController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show( $page ) {
+		Auth::user()->authorizeRoles( 'admin' );
+
 		if ( ! View::exists( 'admin.' . $page ) ) {
 			abort( 404, 'Page not found' );
 		}
@@ -56,16 +61,6 @@ class AdminController extends Controller {
 		$functionName = 'show' . ucfirst( $page );
 
 		return $this->$functionName();
-	}
-
-	public function storeBmiFile( Request $request ) {
-		//Storage::disk( 'local' )->put( 'file.txt', 'Contents' );
-		$file = $request->file( 'bmiData' );
-		$file->storeAs(
-			'bmiData', $file->getClientOriginalName()
-		);
-
-		return redirect()->back();
 	}
 
 	private function showIndex() {
@@ -88,12 +83,17 @@ class AdminController extends Controller {
 			$q->where( 'name', 'doctor' );
 		} )->get();
 
-		return view( 'admin.doctors', compact( [ 'nav', 'doctors' ] ) );
+		$unverifiedSurgeries = Surgery::where( 'verified', false )->get();
+		$surgeries           = Surgery::where( 'verified', true )->get();
+
+		return view( 'admin.doctors', compact( [ 'nav', 'doctors', 'unverifiedSurgeries', 'surgeries' ] ) );
 	}
 
 	private function showBmis() {
 		$nav   = $this->getAdminNavForPage( 'bmis' );
-		$files = Storage::files( 'bmiData' );
+		$files = DB::table( 'bmi_files' )->orderBy( 'created_at', 'desc' )->get();
+		//Storage::allFiles( 'bmiData' );
+//		dd( strpos( 'female', Storage::url( $files[1] ) ) !== false );
 
 		return view( 'admin.bmis', compact( [ 'nav', 'files' ] ) );
 

@@ -90,7 +90,7 @@ return [
 	|
 	*/
 
-	'fallback_locale' => 'en',
+	'fallback_locale' => 'sk',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -166,6 +166,7 @@ return [
 		/*
 		 * Package Service Providers...
 		 */
+		App\Service\ValidationServiceProvider::class,
 
 		//
 

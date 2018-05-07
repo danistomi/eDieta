@@ -4,19 +4,23 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserSettingsTable extends Migration {
+class CreatePatientSurgeryTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create( 'user_settings', function ( Blueprint $table ) {
-			$table->increments( 'id' );
+		Schema::create( 'patient_surgery', function ( Blueprint $table ) {
+			//$table->increments('id');
 			$table->integer( 'user_id' )->unsigned();
-			$table->string( 'site_language', 3 )->nullable();
-			$table->text( 'properties' )->nullable();
+			$table->integer( 'surgery_id' )->unsigned();
 			$table->timestamps();
+		} );
+
+		Schema::table( 'patient_surgery', function ( Blueprint $table ) {
+			$table->primary( [ 'user_id', 'surgery_id' ] );
+			$table->foreign( 'surgery_id' )->references( 'id' )->on( 'surgeries' )->onDelete( 'cascade' );
 			$table->foreign( 'user_id' )->references( 'id' )->on( 'users' )->onDelete( 'cascade' );
 		} );
 	}
@@ -27,6 +31,6 @@ class CreateUserSettingsTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists( 'user_settings' );
+		Schema::dropIfExists( 'patient_surgery' );
 	}
 }

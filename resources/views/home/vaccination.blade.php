@@ -7,6 +7,7 @@
 	<?php
 	} ?>
     <div class=" col-md-12 mt-3">
+        <h3>@lang('vaccination.vaccination_calendar')</h3>
         @if($vaccinations)
             <table class="table table-striped table-responsive-lg">
                 <thead>

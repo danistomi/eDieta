@@ -6,7 +6,7 @@ return [
 	'age'                  => 'Vek',
 	'immunization'         => 'Druh očkovania',
 	'type'                 => 'Typ očkovania',
-	'recommended'          => 'Povinne',
+	'recommended'          => 'Povinné',
 	'add'                  => 'Pridať',
 	'remove'               => 'Odobrať',
 ];

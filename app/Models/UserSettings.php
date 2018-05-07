@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class UserSettings extends Model {
 
 	protected $fillable = [
-		'site_language'
+		'site_language',
+		'properties'
 	];
 
 	public function user() {

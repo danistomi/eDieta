@@ -21,7 +21,6 @@ Route::get( '/vaccination/{childId}', 'HomeController@vaccination' )->where( 'ch
 Route::get( '/bmi/{childId}', 'HomeController@bmi' )->where( 'childId', '[0-9]+' );
 
 Route::get( 'lang/{lang}', [ 'as' => 'lang.switch', 'uses' => 'LanguageController@switchLang' ] );
-Route::get( 'newdoctor', 'DoctorController@newDoctor' );
 
 Route::resource( 'children', 'ChildrenController', [
 	'only' => [
@@ -31,9 +30,7 @@ Route::resource( 'children', 'ChildrenController', [
 ] );
 
 Route::post( 'childrenVacc', 'ChildrenController@childrenVacc' );
-Route::post( 'create_ambulance', 'DoctorController@createAmbulance' );
-Route::post( '/getVaccinationForm', 'AjaxController@getVaccinationForm' );
-Route::post( 'uploadBmiData', 'AdminController@storeBmiFile' )->name( 'admin.bmi' );
+Route::post( 'getVaccinationForm', 'AjaxController@getVaccinationForm' );
 
 Route::resource( 'admin', 'AdminController', [
 	'only' => [
@@ -54,6 +51,22 @@ Route::resource( 'bmi', 'BmiController', [
 		'store',
 		'update',
 		'destroy'
+	]
+] );
+Route::get( 'new_surgery', 'Surgery\SurgeryController@newSurgery' );
+Route::post( 'verify_surgery/{id}', 'Surgery\SurgeryController@verify' );
+Route::resource( 'surgery', 'Surgery\SurgeryController', [
+	'except' => [
+		'index'
+	]
+] );
+
+
+Route::post( 'defaultBmiUpload', 'Admin\BmiController@storeBmiFile' )->name( 'defaultBmi.upload' );
+Route::post( 'defaultBmiStore/{fileId}', 'Admin\BmiController@storeBmi' )->name( 'defaultBmi.store' )->where( 'fileId', '[0-9]+' );
+Route::resource( 'defaultBmi', 'Admin\BmiController', [
+	'only' => [
+		'destroy',
 	]
 ] );
 

@@ -16,6 +16,7 @@ class CreateDefaultBmisTable extends Migration {
 			$table->integer( 'age' );
 			$table->float( 'bmi' );
 			$table->enum( 'gender', [ 'male', 'female' ] );
+			$table->string( 'percentile', 6 );
 			$table->timestamps();
 		} );
 	}

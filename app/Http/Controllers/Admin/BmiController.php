@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Components\BmiFileParser;
 use App\Http\Requests\StoreBmiFile;
 use App\Http\Controllers\Controller;
+use App\Models\DefaultBmi;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -35,10 +36,25 @@ class BmiController extends Controller {
 	}
 
 	public function storeBmi( $fileId ) {
-		$file    = DB::table( 'bmi_files' )->where( 'id', $fileId )->first();
-		$content = Storage::get( $file->storage_file_name );
-		$parser  = new BmiFileParser();
-		$parser->setContent( $content )->parse();
+		$file     = DB::table( 'bmi_files' )->where( 'id', $fileId )->first();
+		$bmiArray = $this->getBmiDataFromFile( $file );
+		foreach ( $bmiArray as $months => $dataArray ) {
+			foreach ( $dataArray as $percentile => $bmi ) {
+//				$defaultBmi             = new DefaultBmi();
+//				$defaultBmi->age        = $months;
+//				$defaultBmi->bmi        = $bmi;
+//				$defaultBmi->gender     = $file->gender;
+//				$defaultBmi->percentile = $percentile;
+//				$defaultBmi->save();
+				DefaultBmi::updateOrCreate(
+					[ 'age' => $months, 'gender' => $file->gender, 'percentile' => $percentile ],
+					[ 'bmi' => $bmi ]
+				);
+			}
+		}
+		DB::table( 'bmi_files' )->where( 'id', $fileId )->update( [ 'in_use' => true ] );
+
+		return redirect()->back();
 	}
 
 	public function destroy( $fileId ) {
@@ -49,5 +65,12 @@ class BmiController extends Controller {
 		DB::table( 'bmi_files' )->where( 'id', $fileId )->delete();
 
 		return redirect()->back();
+	}
+
+	private function getBmiDataFromFile( $file ) {
+		$content = Storage::get( $file->storage_file_name );
+		$parser  = new BmiFileParser();
+
+		return $parser->setContent( $content )->parse();
 	}
 }

@@ -6,8 +6,8 @@ return [
 		'years'  => '{1} :age rok|[2,Inf] :age roky'
 	],
 	'gender'        => 'Pohlavie',
-	'male'          => 'Muz',
-	'female'        => 'Zena',
+	'male'          => 'Muž',
+	'female'        => 'Žena',
 	'first_name'    => 'Meno',
 	'last_name'     => 'Priezvisko',
 	'date_of_birth' => 'Dátum narodenia'

@@ -2,11 +2,11 @@
 
 return [
 	'language'   => 'Jazyk',
-	'login'      => 'Prihlasenie',
-	'register'   => 'Registracia',
+	'login'      => 'Prihlásenie',
+	'register'   => 'Registrácia',
 	'dashboard'  => 'Ovládací panel',
-	'newSurgery' => 'Som lekar',
+	'newSurgery' => 'Som lekár',
 	'save'       => 'Uložiť',
 	'update'     => 'Aktualizovať',
-	'new_child'  => 'Nove dieta',
+	'new_child'  => 'Nové dieťa',
 ];

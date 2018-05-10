@@ -96,3 +96,15 @@ legend {
 .form-register {
     max-width: 620px;
 }
+
+.table-hhi-danger {
+    background-color: #df6e28;
+}
+
+.table-hhi-success {
+    background-color: #b8de7b;
+}
+
+.table-hhi-warning {
+    background-color: #f5cb27;
+}

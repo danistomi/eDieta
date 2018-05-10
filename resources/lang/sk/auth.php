@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'failed'   => 'Nesprávne použivateľske meno alebo heslo.',
-	'throttle' => 'Skuste znova o :seconds secúnd.',
+	'failed'   => 'Nesprávne používateľské meno alebo heslo.',
+	'throttle' => 'Skúste znova o :seconds secúnd.',
 
 ];

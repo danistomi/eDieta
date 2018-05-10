@@ -3,6 +3,6 @@
 return [
 	'main'         => 'Main',
 	'vaccinations' => 'Očkovanie',
-	'doctors'      => 'Lekary',
+	'doctors'      => 'Lekári',
 	'bmis'         => 'Bmi',
 ];

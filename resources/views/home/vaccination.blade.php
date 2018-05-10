@@ -9,7 +9,7 @@
     <div class=" col-md-12 mt-3">
         <h3>@lang('vaccination.vaccination_calendar')</h3>
         @if($vaccinations)
-            <table class="table table-striped table-responsive-lg">
+            <table class="table table-responsive-lg">
                 <thead>
                 <tr>
                     <th>@lang('vaccination.name')</th>
@@ -21,7 +21,7 @@
                 </thead>
                 @foreach($vaccinations as $vaccination)
 		            <?php $vaccStatus = $vaccination->getStatus( $selectedChild ) ?>
-                    <tr class="table-{{ $vaccStatus }}">
+                    <tr class="table-hhi-{{ $vaccStatus }}">
                         <td>{{ $vaccination->name }}</td>
                         <td>
                             @if(is_array($vaccination->age[0]))

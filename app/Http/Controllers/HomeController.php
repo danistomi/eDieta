@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Child;
+use App\Models\DefaultBmi;
 use App\Models\Vaccination;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,10 +28,9 @@ class HomeController extends Controller {
 
 		$children = $this->getChildren();
 		if ( $children->isEmpty() ) {
-			//TODO noChild design
 			return view( 'home.noChild' );
 		}
-		$selectedChildId = $children[0]->id;
+		$selectedChildId = $children->first()->id;
 
 		return $this->vaccination( $selectedChildId );
 	}
@@ -65,6 +65,7 @@ class HomeController extends Controller {
 			echo "<h1>asd</h1>";
 		}
 
+		/** @var Child $selectedChild */
 		$selectedChild = $children->where( 'id', $childId );
 		if ( $selectedChild->isEmpty() ) {
 			return abort( 404 );
@@ -72,6 +73,7 @@ class HomeController extends Controller {
 		$selectedChild = $selectedChild->first();
 		$section       = 'bmi';
 		$bmis          = Child::find( $childId )->bmis()->orderBy( 'created_at', 'ASC' )->get();
+		$defaultBmis   = DefaultBmi::where( 'age', '<=', $selectedChild->ageInMonths() );
 		$bmiChartData  = array();
 		foreach ( $bmis as $bmi ) {
 			array_push( $bmiChartData, [ 'age' => $bmi->childAge, 'bmi' => $bmi->bmi ] );

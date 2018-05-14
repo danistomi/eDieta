@@ -49,10 +49,17 @@ class Child extends Model {
 	}
 
 	public function getAgeAttribute() {
-		$birthday = new DateTime( $this->date_of_birth );
-		$diff     = $birthday->diff( new DateTime() );
-		$months   = (int) ( $diff->format( '%m' ) ) + 12 * $diff->format( '%y' );
+		$months = $this->ageInMonths();
 
 		return AgeConverter::MonthsToFriendlyAge( $months );
+	}
+
+	public function ageInMonths() {
+		$birthday = new DateTime( $this->date_of_birth );
+		$diff     = $birthday->diff( new DateTime() );
+
+		return (int) ( $diff->format( '%m' ) ) + 12 * $diff->format( '%y' );
+
+
 	}
 }

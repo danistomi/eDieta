@@ -40,12 +40,6 @@ class BmiController extends Controller {
 		$bmiArray = $this->getBmiDataFromFile( $file );
 		foreach ( $bmiArray as $months => $dataArray ) {
 			foreach ( $dataArray as $percentile => $bmi ) {
-//				$defaultBmi             = new DefaultBmi();
-//				$defaultBmi->age        = $months;
-//				$defaultBmi->bmi        = $bmi;
-//				$defaultBmi->gender     = $file->gender;
-//				$defaultBmi->percentile = $percentile;
-//				$defaultBmi->save();
 				DefaultBmi::updateOrCreate(
 					[ 'age' => $months, 'gender' => $file->gender, 'percentile' => $percentile ],
 					[ 'bmi' => $bmi ]

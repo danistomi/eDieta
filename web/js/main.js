@@ -43,7 +43,7 @@ $(document).ready(function () {
                 }]
             },
             legend: {
-                display: false
+                display: true
             }
         };
         var myChart = new Chart(bmiChart, {

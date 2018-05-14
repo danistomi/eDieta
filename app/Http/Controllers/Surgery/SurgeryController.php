@@ -6,6 +6,7 @@ use App\Http\Requests\StoreSurgery;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\Surgery;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -30,12 +31,14 @@ class SurgeryController extends Controller {
 
 	public function store( StoreSurgery $request ) {
 		if ( Surgery::where( 'doctor_id', Auth::user()->id )->exists() ) {
+			//TODO uzenet szlovakositasa
 			return redirect()->back()->with( 'error', 'You already added request' );
 		}
 		$surgery = new Surgery();
 
 		$surgery->doctor_id = Auth::user()->id;
 		$surgery->name      = $request->name;
+		$surgery->zone      = $request->zone;
 		$surgery->address   = $request->address;
 		$surgery->city      = $request->city;
 		$surgery->zip       = $request->zip;
@@ -56,6 +59,10 @@ class SurgeryController extends Controller {
 		$surgery->save();
 
 		return redirect()->back();
+	}
+
+	public function find( Request $request ) {
+
 	}
 
 	public function destroy( $id ) {

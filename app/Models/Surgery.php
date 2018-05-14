@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string address
  * @property string city
  * @property integer zip
+ * @property mixed zone
  */
 class Surgery extends Model {
 	public function doctor() {

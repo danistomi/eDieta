@@ -26,6 +26,14 @@
                         @endif
                     </div>
                     <div class="mb-3">
+                        <label for="zone">@lang('surgery.zone')</label>
+                        <input type="text" id="zone" class="form-control{{ $errors->has('zone') ? ' is-invalid' : '' }}"
+                               name="zone" value="{{ old('zone') }}">
+                        @if ($errors->has('zone'))
+                            <div class="invalid-feedback">{{ $errors->first('zone') }}</div>
+                        @endif
+                    </div>
+                    <div class="mb-3">
                         <label for="address">@lang('surgery.address')</label>
                         <input type="text" id="address"
                                class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address"

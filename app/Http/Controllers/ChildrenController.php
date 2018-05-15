@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreChild;
 use App\Models\Child;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Psy\Exception\ErrorException;
 
 class ChildrenController extends Controller {
 	public function __construct() {
@@ -32,7 +32,7 @@ class ChildrenController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store( Request $request ) {
+	public function store( StoreChild $request ) {
 		$child = new Child();
 
 		$child->parent_id     = Auth::user()->id;

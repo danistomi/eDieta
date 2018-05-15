@@ -53,6 +53,7 @@
                                    value="{{ old('zip') }}">
                         </div>
                     </div>
+                    {{--TODO uzeet, ha egyezo a cim--}}
                     @if($errors->has('address') && $errors->has('city') && $errors->has('zip'))
                         <div class="alert alert-danger my-3">@lang('validation.address_exists')</div>
                     @endif

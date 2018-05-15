@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class StoreSurgery extends FormRequest {
+class StoreChild extends FormRequest {
 	/**
 	 * Determine if the user is authorized to make this request.
 	 *
@@ -21,14 +21,11 @@ class StoreSurgery extends FormRequest {
 	 * @return array
 	 */
 	public function rules() {
-
 		return [
-			'name'    => 'required|min:3|max:255|unique:surgeries,name',
-			'zone'    => 'required|min:2|max:255',
-			'address' => 'required|min:3|max:255|unique_with:surgeries,' . $this->request->get( 'city' ) . ',' . $this->request->get( 'zip' ) . '',
-			'city'    => 'required|min:3|max:255',
-			'zip'     => 'required|digits:5'
+			'first_name'    => 'required|min:3|max:255',
+			'last_name'     => 'required|min:3|max:255',
+			'date_of_birth' => 'required|date',
+			'gender'        => 'required|in:male,female'
 		];
 	}
-
 }

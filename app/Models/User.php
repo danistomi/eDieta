@@ -54,7 +54,7 @@ class User extends Authenticatable {
 		return $this->hasOne( Surgery::class, 'doctor_id' );
 	}
 
-	public function surgeris() {
+	public function surgeries() {
 		return $this->belongsToMany( Surgery::class, 'patient_surgery', 'user_id', 'surgery_id' );
 	}
 

@@ -81,7 +81,7 @@
                                 </a>
                             @endif
                             @if(Auth::user()->hasRole('doctor'))
-                                <a class="dropdown-item" href="{{ url('/surgery') }}">
+                                <a class="dropdown-item" href="{{ url('/surgery',[Auth::user()->workplace->id]) }}">
                                     @lang('surgery.surgery')
                                 </a>
                             @endif

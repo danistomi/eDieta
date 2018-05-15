@@ -12,16 +12,16 @@
                 {{ csrf_field() }}
                 <div class="mb-3">
                     <label for="first-name">@lang('user.first_name')</label>
-                    <input type="text" class="form-control" name="first_name" id="first-name">
+                    <input type="text" class="form-control" name="first_name" id="first-name" required>
                 </div>
                 <div class="mb-3">
                     <label for="last-name">@lang('user.last_name')</label>
-                    <input type="text" class="form-control" name="last_name" id="last-name">
+                    <input type="text" class="form-control" name="last_name" id="last-name" required>
                 </div>
                 <div class="form-group">
                     <label for="date-of-birth">@lang('user.date_of_birth')</label>
                     <div class="input-group" id="datetimepickerDOF">
-                        <input type="text" class="form-control" name="date_of_birth" id="date-of-birth"/>
+                        <input type="text" class="form-control" name="date_of_birth" id="date-of-birth" required>
                         <div class="input-group-addon"><i class="fa fa-calendar"></i>
                         </div>
                     </div>

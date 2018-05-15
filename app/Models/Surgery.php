@@ -11,8 +11,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property string city
  * @property integer zip
  * @property mixed zone
+ * @property array properties
  */
 class Surgery extends Model {
+
+	protected $casts = [
+		'properties' => 'array'
+	];
+
 	public function doctor() {
 		return $this->hasOne( User::class, 'id', 'doctor_id' );
 	}

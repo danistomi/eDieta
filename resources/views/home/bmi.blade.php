@@ -26,7 +26,7 @@
                     @endif
                 </div>
                 <div class="col-md-12 mb-3">
-                    <button type="submit" class="btn btn-primary btn-block" name="submit">Save</button>
+                    <button type="submit" class="btn btn-primary btn-block" name="submit">@lang('app.save')</button>
                 </div>
             </div>
         </form>

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer zip
  * @property mixed zone
  * @property array properties
+ * @property mixed region
  */
 class Surgery extends Model {
 

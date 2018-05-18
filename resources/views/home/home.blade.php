@@ -24,8 +24,8 @@
                             </div>
                             <nobr>
                                 <span class="text-muted">
-                                    @lang('user.age.age')
-                                    : {{ trans_choice('user.age.'.$child->age[1],floor($child->age[0]), ['age'=> $child->age[0]]) }}
+                                    @lang('user.age.age'):
+                                    {{ trans_choice('user.age.'.$child->age[1],floor($child->age[0]), ['age'=> $child->age[0]]) }}
                                 </span>
                             </nobr>
                         </li>

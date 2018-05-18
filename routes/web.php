@@ -55,6 +55,7 @@ Route::resource( 'bmi', 'BmiController', [
 ] );
 Route::get( 'new_surgery', 'Surgery\SurgeryController@newSurgery' );
 Route::post( 'verify_surgery/{id}', 'Surgery\SurgeryController@verify' );
+Route::get( '/surgery/search', 'Surgery\SurgeryController@search' );
 Route::resource( 'surgery', 'Surgery\SurgeryController', [
 	'except' => [
 		'index'

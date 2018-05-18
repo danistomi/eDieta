@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-6 mx-auto text-center">
                     @if(Config::get('app.locale') == 'sk')
-                        <p>Zatial nemáte pridané žiadne dieťa, pridajte prvú.</p>
+                        <p>Zatial nemáte pridané žiadne dieťa, pridajte prvé.</p>
                     @endif
                     @include('home.add_child_form')
                 </div>

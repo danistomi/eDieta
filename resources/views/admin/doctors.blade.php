@@ -15,8 +15,8 @@
                             <th>@lang('surgery.doctor_name')</th>
                             <th>@lang('surgery.surgery_name')</th>
                             <th>@lang('surgery.address')</th>
-                            <th>@lang('surgery.zip')</th>
-                            <th>@lang('surgery.city')</th>
+                            <th>@lang('surgery.chamber')</th>
+                            <th>@lang('surgery.reg_num')</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -24,9 +24,9 @@
                             <tr>
                                 <td>{{ $surgery->doctor->fullName}}</td>
                                 <td>{{ $surgery->name }}</td>
-                                <td>{{ $surgery->address }}</td>
-                                <td>{{ $surgery->zip }}</td>
-                                <td>{{ $surgery->city }}</td>
+                                <td>{{ $surgery->city }} {{ $surgery->address }} - {{ $surgery->zip }}</td>
+                                <td>{{ $surgery->doctor->settings->properties['chamber'] }}</td>
+                                <td>{{ $surgery->doctor->settings->properties['reg_num'] }}</td>
                                 <td>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -69,9 +69,9 @@
                             <tr>
                                 <td>{{ $surgery->doctor->fullName}}</td>
                                 <td>{{ $surgery->name }}</td>
-                                <td>{{ $surgery->address }}</td>
-                                <td>{{ $surgery->zip }}</td>
-                                <td>{{ $surgery->city }}</td>
+                                <td> {{ $surgery->city }} {{ $surgery->address }} - {{ $surgery->zip }}</td>
+                                <td></td>
+                                <td></td>
                                 <td>
                                     <div class="row">
                                         <div class="col-md-12">

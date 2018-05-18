@@ -11,6 +11,10 @@ class UserSettings extends Model {
 		'properties'
 	];
 
+	protected $casts = [
+		'properties' => 'array'
+	];
+
 	public function user() {
 		return $this->belongsTo( User::class );
 	}

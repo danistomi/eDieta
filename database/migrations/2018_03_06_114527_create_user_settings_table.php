@@ -15,7 +15,7 @@ class CreateUserSettingsTable extends Migration {
 			$table->increments( 'id' );
 			$table->integer( 'user_id' )->unsigned();
 			$table->string( 'site_language', 3 )->nullable();
-			$table->text( 'properties' )->nullable();
+			$table->json( 'properties' )->nullable();
 			$table->timestamps();
 			$table->foreign( 'user_id' )->references( 'id' )->on( 'users' )->onDelete( 'cascade' );
 		} );

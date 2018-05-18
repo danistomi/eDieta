@@ -1,7 +1,7 @@
 <div id="add-child-form" style="display: none">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h4>Add new child</h4>
+            <h4>Pridaj novú dieťu</h4>
         </div>
         <div class="panel-body">
         </div>
@@ -55,5 +55,5 @@
     </div>
 </div>
 <div class="">
-    <button id="add-child-button" class="btn btn-primary btn-block">Nové dieťa</button>
+    <button id="add-child-button" class="btn btn-primary btn-block">@lang('app.new_child')</button>
 </div>

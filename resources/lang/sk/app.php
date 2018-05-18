@@ -8,5 +8,5 @@ return [
 	'newSurgery' => 'Som lekár',
 	'save'       => 'Uložiť',
 	'update'     => 'Aktualizovať',
-	'new_child'  => 'Nové dieťa',
+	'new_child'  => 'Nová dieťa',
 ];

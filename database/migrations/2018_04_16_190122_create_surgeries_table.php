@@ -16,6 +16,7 @@ class CreateSurgeriesTable extends Migration {
 			$table->integer( 'doctor_id' )->unique()->unsigned();
 			$table->string( 'name' )->unique();
 			$table->string( 'zone' );
+			$table->string( 'region' );
 			$table->string( 'address' );
 			$table->string( 'city' );
 			$table->integer( 'zip' );

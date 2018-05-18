@@ -5,6 +5,10 @@ return [
 	'new_surgery'         => 'Nová ambulancia',
 	'surgery_name'        => 'Meno ambulancie',
 	'zone'                => 'Okres',
+	'region'              => 'Kraj',
+	'chamber'             => 'Komora',
+	'specialization'      => 'Odbor',
+	'reg_num'             => 'Registračné číslo',
 	'address'             => 'Adresa',
 	'city'                => 'Mesto',
 	'zip'                 => 'ZIP',
@@ -25,5 +29,6 @@ return [
 		'friday'    => 'Piatok',
 		'saturday'  => 'Sobota',
 		'sunday'    => 'Nedeľa',
-	]
+	],
+	'add_success'         => 'Úspešne ste pridali prihlášku.'
 ];

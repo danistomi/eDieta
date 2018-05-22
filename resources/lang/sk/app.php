@@ -9,4 +9,5 @@ return [
 	'save'       => 'Uložiť',
 	'update'     => 'Aktualizovať',
 	'new_child'  => 'Nová dieťa',
+	'confirm'    => "Súhlasím s <a href=\" :url \">použitím osobných údajov</a>",
 ];

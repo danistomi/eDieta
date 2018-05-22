@@ -51,7 +51,7 @@
                 </dl>
             </div>
         </div>
-        @if(Auth::user() && Auth::user()->hasrole('doctor'))
+        @if(Auth::user() && Auth::user()->hasrole('doctor') && Auth::user()->id == $surgery->doctor->id)
             <a href="{{ url('surgery', [$surgery->id, 'edit']) }}">Edit</a>
         @endif
     </div>

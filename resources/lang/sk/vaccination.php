@@ -9,4 +9,5 @@ return [
 	'recommended'          => 'Povinné',
 	'add'                  => 'Pridať',
 	'remove'               => 'Odobrať',
+	'no_vacc'              => 'Nenašli sme očkovanie, poďte naspäť neskôr.'
 ];

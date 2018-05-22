@@ -90,3 +90,13 @@ function toggleMonthsAges(element) {
         }
     }
 }
+
+function toggleVacc(element) {
+    var x = element.parentNode.childNodes[3].childNodes[3];
+
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}

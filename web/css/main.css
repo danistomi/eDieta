@@ -97,6 +97,18 @@ legend {
     max-width: 620px;
 }
 
+.card-hhi-danger {
+    background-color: #df6e28;
+}
+
+.card-hhi-success {
+    background-color: #b8de7b;
+}
+
+.card-hhi-warning {
+    background-color: #f5cb27;
+}
+
 .table-hhi-danger {
     background-color: #df6e28;
 }

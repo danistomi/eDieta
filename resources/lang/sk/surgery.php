@@ -30,5 +30,6 @@ return [
 		'saturday'  => 'Sobota',
 		'sunday'    => 'Nedeľa',
 	],
-	'add_success'         => 'Úspešne ste pridali prihlášku.'
+	'add_success'         => 'Úspešne ste pridali prihlášku.',
+	'already_added'       => 'Už máte pridanú prihlášku.',
 ];

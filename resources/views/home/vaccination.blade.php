@@ -11,7 +11,7 @@
         @forelse($vaccinations as $vaccination)
 		    <?php $vaccStatus = $vaccination->getStatus( $selectedChild ) ?>
             <div class="card mb-3 card-hhi-{{ $vaccStatus }}">
-                <div class="card-header" onclick="toggleVacc(this)">
+                <div class="card-header" onclick="toggleVacc(thisd)">
                     {{ $vaccination->name }}
                 </div>
                 <div class="card-body">

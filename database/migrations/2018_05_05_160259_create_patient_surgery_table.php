@@ -15,6 +15,8 @@ class CreatePatientSurgeryTable extends Migration {
 			//$table->increments('id');
 			$table->integer( 'user_id' )->unsigned();
 			$table->integer( 'surgery_id' )->unsigned();
+			$table->string( 'verify_code' );
+			$table->boolean( 'verified' );
 			$table->timestamps();
 		} );
 

@@ -10,5 +10,6 @@ return [
 	'female'        => 'Žena',
 	'first_name'    => 'Meno',
 	'last_name'     => 'Priezvisko',
-	'date_of_birth' => 'Dátum narodenia'
+	'date_of_birth' => 'Dátum narodenia',
+	'email'         => 'E-mail'
 ];

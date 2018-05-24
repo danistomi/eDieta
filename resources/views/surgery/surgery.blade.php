@@ -22,15 +22,25 @@
                     <dd>{{ $surgery->zone }}</dd>
                     <dt>E-mail:</dt>
                     <dd>{{ $surgery->doctor->email }}</dd>
+                    @if(Auth::check() && Auth::user()->id != $surgery->doctor->id)
+                        @if(!Auth::user()->hasDoctor($surgery->doctor->id))
+                            <dt>@lang('surgery.follow_doctor.description')</dt>
+                            <form method="post" action="{{ url('follow_doctor') }}" class="mb-3">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="doctor_id" value="{{ $surgery->doctor->id }}">
+                                <button class="btn btn-primary">@lang('surgery.follow_doctor.follow')</button>
+                            </form>
+                        @endif
+                    @endif
                 </dl>
             </div>
             <div class="col-xl-4">
                 <h4>@lang('surgery.ordination_hours')</h4>
                 <dl class="row mt-3">
                     @foreach($sortedDays::getSortedDays() as $day)
-				        <?php
-				        $hour = $surgery->properties['ordinationHours'][ $day ]
-				        ?>
+		                <?php
+		                $hour = $surgery->properties['ordinationHours'][ $day ]
+		                ?>
                         @if($hour['from'] === null || $hour['from'] == '' || $hour['to'] === null || $hour['to'] == '')
                             @continue
                         @endif
@@ -51,8 +61,9 @@
                 </dl>
             </div>
         </div>
-        @if(Auth::user() && Auth::user()->hasrole('doctor') && Auth::user()->id == $surgery->doctor->id)
+        @if(Auth::check() && Auth::user()->hasrole('doctor') && Auth::user()->id == $surgery->doctor->id)
             <a href="{{ url('surgery', [$surgery->id, 'edit']) }}">Edit</a>
         @endif
+
     </div>
 @endsection

@@ -5,16 +5,18 @@
         <div class="py-5 text-left"><h2>@lang('surgery.new_surgery')</h2></div>
         <div class="mb-3">
             <div class="row">
-                @if(session()->has('message'))
-                    <div class="alert alert-success mt-3 mb-3">
-                        {{ session()->get('message') }}
-                    </div>
-                @endif
-                @if(session()->has('error'))
-                    <div class="alert alert-danger mt-3 mb-3">
-                        {{ session()->get('error') }}
-                    </div>
-                @endif
+                <div class="col-md-12">
+                    @if(session()->has('message'))
+                        <div class="alert alert-success mt-3 mb-3">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger mt-3 mb-3">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
+                </div>
             </div>
             <form method="post" action="{{ url('surgery') }}">
                 <div class="row">

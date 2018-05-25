@@ -54,8 +54,16 @@ class User extends Authenticatable {
 		return $this->hasOne( Surgery::class, 'doctor_id' );
 	}
 
-	public function surgeries() {
-		return $this->belongsToMany( Surgery::class, 'patient_surgery', 'user_id', 'surgery_id' );
+	public function doctors() {
+		return $this->belongsToMany( User::class, 'doctor_patient', 'user_id', 'doctor_id' )->withTimestamps();
+	}
+
+	public function patients() {
+		$this->authorizeRoles( 'doctor' );
+
+		return $this->belongsToMany( User::class, 'doctor_patient', 'doctor_id', 'user_id' )
+		            ->withTimestamps()
+		            ->withPivot( 'verify_code' );
 	}
 
 
@@ -100,5 +108,10 @@ class User extends Authenticatable {
 
 	public function hasChild( $childId ) {
 		return null !== $this->children()->find( $childId );
+	}
+
+	public function hasDoctor( $doctorId ) {
+//		dd($this->doctors()->where( 'id', $doctorId )->wherePivot( 'verified', true )->first());
+		return null !== $this->doctors()->where( 'id', $doctorId )->first();
 	}
 }

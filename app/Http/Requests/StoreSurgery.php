@@ -32,7 +32,7 @@ class StoreSurgery extends FormRequest {
 			'chamber'        => 'required|min:3|max:255',
 			'reg_num'        => 'required|regex:/^P[0-9]{5}$/',
 			'specialization' => 'required|min:3',
-			'confirlm'       => 'required'
+			'confirm'        => 'present'
 		];
 	}
 

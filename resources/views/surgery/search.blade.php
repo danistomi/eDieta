@@ -47,22 +47,26 @@
                 <button class="btn btn-primary btn-lg float-right" type="submit">@lang('search.search')</button>
             </div>
         </form>
-        <div class="row">
-            <div class="col-md-12">
-                @forelse($surgeries as $surgery)
-                    <div class="card my-3">
-                        <a href="{{ url('/surgery', [$surgery->id]) }}">
-                            <div class="card-header">{{ $surgery->name }}</div>
-                        </a>
-                        <div class="card-body">
-                            {{ $surgery->address }}<br>
-                            {{ $surgery->properties['doctorName'] }}
-                        </div>
+        <div class="card-columns">
+            @forelse($surgeries as $surgery)
+                <div class="card my-3">
+                    <a href="{{ url('/surgery', [$surgery->id]) }}">
+                        <div class="card-header">{{ $surgery->name }}</div>
+                    </a>
+                    <div class="card-body">
+                        <dl>
+                            <dt>@lang('surgery.doctor_name')</dt>
+                            <dd>{{ $surgery->properties['doctorName'] }}</dd>
+                            <dt>@lang('surgery.address')</dt>
+                            <dd>{{ $surgery->address }}</dd>
+                            <dt>@lang('surgery.chamber')</dt>
+                            <dd>{{ $surgery->doctor->settings->properties['chamber'] }}</dd>
+                        </dl>
                     </div>
-                @empty
-                    Empty
-                @endforelse
-            </div>
+                </div>
+            @empty
+                Empty
+            @endforelse
         </div>
     </div>
 @endsection

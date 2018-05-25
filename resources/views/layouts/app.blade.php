@@ -42,6 +42,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="nav navbar-nav ml-auto">
+                @if(Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">@lang('app.my_children')</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/doctors') }}">@lang('app.my_doctors')</a>
+                    </li>
+                @endif
+                @if(Auth::check() && Auth::user()->hasRole('doctor'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/patients') }}">@lang('app.my_patients')</a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/surgery/search') }}">@lang('search.sarch_doctor')</a>
                 </li>
@@ -201,7 +214,7 @@
         {{--<!--/.Social buttons-->--}}
 
         {{--</div>--}}
-            <!--Grid column-->
+        <!--Grid column-->
 
         </div>
 

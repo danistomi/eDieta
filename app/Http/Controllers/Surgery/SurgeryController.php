@@ -77,7 +77,7 @@ class SurgeryController extends Controller {
 	public function store( StoreSurgery $request ) {
 		if ( Surgery::where( 'doctor_id', Auth::user()->id )->exists() ) {
 
-			return redirect()->back()->with( 'error', trans( 'already_added' ) );
+			return redirect()->back()->with( 'error', Lang::get( 'surgery.already_added' ) );
 		}
 		$surgery = new Surgery();
 

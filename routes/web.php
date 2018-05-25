@@ -12,11 +12,18 @@
 */
 
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
 Route::get( '/', 'HomeController@index' );
+Route::get( '/doctors', 'Surgery\DoctorController@index' );
+Route::post( 'follow_doctor', 'Surgery\DoctorController@followDoctor' );
+Route::post( 'verify_doctor', 'Surgery\DoctorController@verify' );
+Route::get( '/patients', 'Surgery\DoctorController@showPatients' );
+Route::get( '/patients/awaiting', 'Surgery\DoctorController@showAwaitingVerificationPatients' );
 Route::get( '/vaccination/{childId}', 'HomeController@vaccination' )->where( 'childId', '[0-9]+' );
 Route::get( '/bmi/{childId}', 'HomeController@bmi' )->where( 'childId', '[0-9]+' );
 

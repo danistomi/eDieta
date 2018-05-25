@@ -57,6 +57,8 @@
                     </div>
                 @endforeach
             </div>
+        @else
+            <div class="alert alert-info">@lang('no')</div>
         @endif
     </div>
 @endsection

@@ -65,7 +65,7 @@
                     </div>
                 </div>
             @empty
-                Empty
+                <div class="alert alert-info">@lang('surgery.no_surgeries')</div>
             @endforelse
         </div>
     </div>

@@ -4,7 +4,7 @@
     <div class="container mt-4">
         <div class="py-5 text-left"><h2>@lang('search.sarch_doctor')</h2></div>
         <form method="get" action="{{ url('/surgery/search') }}">
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="specialization">@lang('surgery.specialization')</label>
@@ -43,30 +43,32 @@
                     </div>
                 </div>
             </div>
-            <div class="clearfix">
+            <div class="clearfix mb-3">
                 <button class="btn btn-primary btn-lg float-right" type="submit">@lang('search.search')</button>
             </div>
         </form>
-        <div class="card-columns">
-            @forelse($surgeries as $surgery)
-                <div class="card my-3">
-                    <a href="{{ url('/surgery', [$surgery->id]) }}">
-                        <div class="card-header">{{ $surgery->name }}</div>
-                    </a>
-                    <div class="card-body">
-                        <dl>
-                            <dt>@lang('surgery.doctor_name')</dt>
-                            <dd>{{ $surgery->properties['doctorName'] }}</dd>
-                            <dt>@lang('surgery.address')</dt>
-                            <dd>{{ $surgery->address }}</dd>
-                            <dt>@lang('surgery.chamber')</dt>
-                            <dd>{{ $surgery->doctor->settings->properties['chamber'] }}</dd>
-                        </dl>
+        @if($surgeries->count())
+            <div class="card-columns">
+                @foreach($surgeries as $surgery)
+                    <div class="card my-3">
+                        <a href="{{ url('/surgery', [$surgery->id]) }}">
+                            <div class="card-header">{{ $surgery->name }}</div>
+                        </a>
+                        <div class="card-body">
+                            <dl>
+                                <dt>@lang('surgery.doctor_name')</dt>
+                                <dd>{{ $surgery->properties['doctorName'] }}</dd>
+                                <dt>@lang('surgery.address')</dt>
+                                <dd>{{ $surgery->address }}</dd>
+                                <dt>@lang('surgery.chamber')</dt>
+                                <dd>{{ $surgery->doctor->settings->properties['chamber'] }}</dd>
+                            </dl>
+                        </div>
                     </div>
-                </div>
-            @empty
-                <div class="alert alert-info">@lang('surgery.no_surgeries')</div>
-            @endforelse
-        </div>
+                @endforeach
+            </div>
+        @else
+            <div class="alert alert-info">@lang('surgery.no_surgeries')</div>
+        @endif
     </div>
 @endsection

@@ -58,7 +58,7 @@
                 @endforeach
             </div>
         @else
-            <div class="alert alert-info">@lang('no')</div>
+            <div class="alert alert-info">@lang('surgery.no_doctor')</div>
         @endif
     </div>
 @endsection

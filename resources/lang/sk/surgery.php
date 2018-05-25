@@ -47,5 +47,5 @@ return [
 	'no_awaiting_patients' => 'Nemáte pacienti na overenie.',
 	'no_patients'          => 'Nemáte pacienti.',
 	'no_surgeries'         => 'Nenašli sme ambulancie.',
-	'no_doctor'            => 'Nenašli sme lekary.',
+	'no_doctor'            => 'Nenašli sme lekáry.',
 ];

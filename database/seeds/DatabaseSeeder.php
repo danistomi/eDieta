@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call( VaccinationTableSeeder::class );
 		$this->call( ChildrenTableSeeder::class );
 		$this->call( BmiTableSeeder::class );
+		$this->call( ChamberSeeder::class );
 	}
 }

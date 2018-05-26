@@ -4,6 +4,9 @@
     <div class="container">
         <div class="py-5 text-left"><h2>@lang('surgery.new_surgery')</h2></div>
         <div class="mb-3">
+            @foreach($chambers as $chamber)
+                {{ dd($chamber) }}
+            @endforeach
             <div class="row">
                 <div class="col-md-12">
                     @if(session()->has('message'))

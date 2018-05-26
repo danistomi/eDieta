@@ -21,8 +21,13 @@ class SurgeryController extends Controller {
 	}
 
 	public function newSurgery() {
+		DB::enableQueryLog();
+		$chambers = DB::table( 'settings' )->where( 'category', '=', 'chambers' )->get();
 
-		return view( 'surgery.newSurgeryForm' );
+
+//		dd( DB::getQueryLog() );
+
+		return view( 'surgery.newSurgeryForm', compact( 'chambers' ) );
 	}
 
 	public function show( $id ) {
@@ -54,8 +59,7 @@ class SurgeryController extends Controller {
 			if ( $request->zone != '' ) {
 				$param[] = [ 'zone', 'like', '%' . $request->zone . '%' ];
 			}
-			$r = $request;
-			DB::enableQueryLog();
+			$r         = $request;
 			$surgeries = Surgery::where( $param )->whereHas( 'doctor', function ( $query ) use ( $request ) {
 				$query->whereHas( 'settings', function ( $query ) use ( $request ) {
 					if ( $request->specialization != '' ) {
@@ -67,7 +71,6 @@ class SurgeryController extends Controller {
 
 				}
 			} )->get();
-//			dd( DB::getQueryLog() );
 		}
 
 

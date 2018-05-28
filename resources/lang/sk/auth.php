@@ -17,6 +17,7 @@ return [
 	'throttle'              => 'Skúste znova o :seconds secúnd.',
 	'verified_mail'         => 'Vaše mail je overená. Môzete prihlásiť.',
 	'already_verified_mail' => 'Vaše mail už bola overená. Môzete prihlásiť.',
-	'error_identify_mail'   => 'Nevedeli sme identifikovať Váš mail.'
+	'error_identify_mail'   => 'Nevedeli sme identifikovať Váš mail.',
+	'sent_mail'             => 'Na Vaše mail sme poslali kód na overenie.',
 
 ];

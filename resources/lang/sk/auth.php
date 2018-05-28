@@ -13,7 +13,10 @@ return [
 	|
 	*/
 
-	'failed'   => 'Nesprávne používateľské meno alebo heslo.',
-	'throttle' => 'Skúste znova o :seconds secúnd.',
+	'failed'                => 'Nesprávne používateľské meno alebo heslo.',
+	'throttle'              => 'Skúste znova o :seconds secúnd.',
+	'verified_mail'         => 'Vaše mail je overená. Môzete prihlásiť.',
+	'already_verified_mail' => 'Vaše mail už bola overená. Môzete prihlásiť.',
+	'error_identify_mail'   => 'Nevedeli sme identifikovať Váš mail.'
 
 ];

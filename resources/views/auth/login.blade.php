@@ -3,6 +3,16 @@
 @section('content')
     <div class="container">
         <div class="py-5 text-center mt-3"><h3>Login</h3></div>
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+        @if (session('warning'))
+            <div class="alert alert-warning">
+                {{ session('warning') }}
+            </div>
+        @endif
         <div class="row">
             <div class="form-signin">
                 <form method="post" action="{{ url('/login') }}">

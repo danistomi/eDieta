@@ -81,4 +81,5 @@ Route::resource( 'defaultBmi', 'Admin\BmiController', [
 Auth::routes();
 
 Route::get( '/home', 'HomeController@index' );
+Route::get( '/user/verify/{token}', 'Auth\RegisterController@verifyUser' );
 

@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\VerifyMail;
 use App\Models\User;
 use App\Models\Role;
 use App\Http\Controllers\Controller;
 use App\Models\UserSettings;
+use App\Models\VerifyUser;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -56,6 +61,12 @@ class RegisterController extends Controller {
 		] );
 	}
 
+	protected function registered( Request $request, $user ) {
+		$this->guard()->logout();
+
+		return redirect( '/login' )->with( 'status', 'We sent you an activation code. Check your email and click on the link to verify.' );
+	}
+
 	/**
 	 * Create a new user instance after a valid registration.
 	 *
@@ -80,6 +91,31 @@ class RegisterController extends Controller {
 		$user->roles()->attach( Role::where( 'name', 'user' )->first() );
 		$user->settings()->save( $settings );
 
+		$verifyUser = VerifyUser::create( [
+			'user_id' => $user->id,
+			'token'   => str_random( 40 ),
+		] );
+
+		Mail::to( $user->email )->send( new VerifyMail( $user ) );
+
 		return $user;
+	}
+
+	public function verifyUser( $token ) {
+		$verifyUser = VerifyUser::where( 'token', $token )->first();
+		if ( isset( $verifyUser ) ) {
+			$user = $verifyUser->user;
+			if ( ! $user->verified ) {
+				$verifyUser->user->verified = true;
+				$verifyUser->user->save();
+				$status = Lang::get( 'auth.verified_mail' );
+			} else {
+				$status = Lang::get( 'auth.already_verified_mail' );
+			}
+		} else {
+			return redirect( '/login' )->with( 'warning', Lang::get( 'auth.error_identify_mail' ) );
+		}
+
+		return redirect( '/login' )->with( 'status', $status );
 	}
 }

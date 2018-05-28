@@ -31,6 +31,10 @@ class User extends Authenticatable {
 		'remember_token',
 	];
 
+	public function verifyUser() {
+		return $this->hasOne( VerifyUser::class );
+	}
+
 	public function roles() {
 		return $this->belongsToMany( Role::class );
 	}

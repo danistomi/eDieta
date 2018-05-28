@@ -1,7 +1,7 @@
 <div id="add-child-form" style="display: none">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h4>Pridaj novú dieťu</h4>
+            <h4>Pridaj nové dieťa</h4>
         </div>
         <div class="panel-body">
         </div>

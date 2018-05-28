@@ -8,7 +8,7 @@ return [
 	'newSurgery'  => 'Som lekár',
 	'save'        => 'Uložiť',
 	'update'      => 'Aktualizovať',
-	'new_child'   => 'Nová dieťa',
+	'new_child'   => 'Nové dieťa',
 	'confirm'     => "Súhlasím s <a href=\" :url \">použitím osobných údajov</a>",
 	'my_patients' => 'Moje pacienti',
 	'my_doctors'  => 'Moje lekáry',

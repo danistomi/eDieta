@@ -132,7 +132,7 @@
 
             <!--First column-->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h6 class="text-uppercase mb-4 font-weight-bold">uman Health Institute - Inštitút pre ľudské
+                <h6 class="text-uppercase mb-4 font-weight-bold">Human Health Institute - Inštitút pre ľudské
                     zdravie</h6>
                 {{--<p>Registrácia: Okresný úrad Nitra, odbor všeobecnej vnútornej správy, č. OU – NR – OVVS1 – 2016 / 010551</p>--}}
             </div>

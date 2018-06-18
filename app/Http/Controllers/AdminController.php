@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\View;
 class AdminController extends Controller {
 
 	private $adminNav = array(
-		'index'        => array( 'name' => 'main', 'active' => false, 'icon' => 'home' ),
+		//'index'        => array( 'name' => 'main', 'active' => false, 'icon' => 'home' ),
 		'vaccinations' => array( 'name' => 'vaccinations', 'active' => false, 'icon' => 'list' ),
 		'bmis'         => array( 'name' => 'bmis', 'active' => false, 'icon' => 'heart' ),
 		'doctors'      => array( 'name' => 'doctors', 'active' => false, 'icon' => 'users' ),
@@ -41,7 +41,7 @@ class AdminController extends Controller {
 		//return User::where( 'id', 1 )->get()->first();
 
 
-		return $this->show( 'index' );
+		return $this->show( 'vaccinations' );
 	}
 
 	/**

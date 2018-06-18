@@ -40,7 +40,7 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">401 - Unauthorized: Access is denied due to invalid credentials.</div>
+        <div class="title">401 - Neautorizovaná: Prístup je zamietaná pre dané poverovacie listiny.</div>
     </div>
 </div>
 </body>

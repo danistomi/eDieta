@@ -235,7 +235,6 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 <script src="/js/jquery-3.3.1.min.js"></script>
-<script src="/js/main.js"></script>
 <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
 <!--  jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -252,7 +251,11 @@
     @if(isset($bmiChartData))
         bmiData = {!!  json_encode($bmiChartData)  !!};
     @endif
+    var defaultBmiData = null;
+    @if(isset($defaultBmiChartData))
+        defaultBmiData = {!!  json_encode($defaultBmiChartData)  !!};
+    @endif
 </script>
-<script rel="js/main.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

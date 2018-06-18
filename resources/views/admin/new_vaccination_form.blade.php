@@ -6,37 +6,37 @@
     @endif
     <div class="row">
         <div class="col-lg-6 mb-3">
-            <label for="v-name">Vaccination name:</label>
+            <label for="v-name">Meno očkovania</label>
             <input type="text" class="form-control" id="v-name" name="v_name" value="{{$ajaxVaccination->name or ''}}">
         </div>
         <div class="col-lg-3 mb-3">
-            <label for="min-age">From</label>
+            <label for="min-age">Od</label>
             <div class="custom-control custom-radio d-inline">
                 <input type="radio" class="custom-control-input" id="min-age-range-m" value="months"
                        name="min_age_range" checked>
                 <label class="custom-control-label" for="min-age-range-m"
-                       onclick="toggleMonthsAges(this)">Months</label>
+                       onclick="toggleMonthsAges(this)">Mesiace</label>
             </div>
             <div class="custom-control custom-radio d-inline">
                 <input type="radio" class="custom-control-input" id="min-age-range-a" value="ages"
                        name="min_age_range">
-                <label class="custom-control-label" for="min-age-range-a" onclick="toggleMonthsAges(this)">Ages</label>
+                <label class="custom-control-label" for="min-age-range-a" onclick="toggleMonthsAges(this)">Roky</label>
             </div>
             <input type="number" step="0.1" class="form-control" id="min-age" name="min_age"
                    value="{{$ajaxVaccination->recommended_min_age or ''}}">
         </div>
         <div class="col-lg-3 mb-3">
-            <label for="max-age">To</label>
+            <label for="max-age">Do</label>
             <div class="custom-control custom-radio d-inline">
                 <input type="radio" class="custom-control-input" id="max-age-range-m" value="months"
                        name="max_age_range" checked>
                 <label class="custom-control-label" for="max-age-range-m"
-                       onclick="toggleMonthsAges(this)">Months</label>
+                       onclick="toggleMonthsAges(this)">Mesiace</label>
             </div>
             <div class="custom-control custom-radio d-inline">
                 <input type="radio" class="custom-control-input" id="max-age-range-a" value="ages"
                        name="max_age_range">
-                <label class="custom-control-label" for="max-age-range-a" onclick="toggleMonthsAges(this)">Ages</label>
+                <label class="custom-control-label" for="max-age-range-a" onclick="toggleMonthsAges(this)">Roky</label>
             </div>
             <input type="number" step="0.1" class="form-control" id="max-age" name="max_age"
                    value="{{$ajaxVaccination->recommended_max_age or ''}}">
@@ -44,7 +44,7 @@
     </div>
     <div class="row">
         <div class="col-lg-6 mb-3">
-            <label for="immunization">Immunization</label>
+            <label for="immunization">Druh očkovania</label>
             <textarea class="form-control" id="immunization"
                       name="immunization">{{$ajaxVaccination->immunization or ''}}</textarea>
         </div>
@@ -56,13 +56,13 @@
                 <input type="checkbox" class="custom-control-input" id="recommended"
                        name="recommended" <?php if ( ! empty( $ajaxVaccination->recommended ) )
 					echo 'checked'?>>
-                <label class="custom-control-label" for="recommended">Recommended</label>
+                <label class="custom-control-label" for="recommended">Odporúčaný</label>
             </div>
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="recurrent"
                        name="recurrent"<?php if ( ! empty( $ajaxVaccination->recurrent ) )
 					echo 'checked'?>>
-                <label class="custom-control-label" for="recurrent">Recurrent</label>
+                <label class="custom-control-label" for="recurrent">Opakujúci</label>
             </div>
         </div>
     </div>

@@ -57,7 +57,7 @@ return [
 
     'from' => [
 	    'address' => env( 'MAIL_FROM_ADDRESS', 'notification@onlinedieta.sk' ),
-	    'name'    => env( 'MAIL_FROM_NAME', 'Example' ),
+	    'name'    => env( 'MAIL_FROM_NAME', 'onlinedieta.sk' ),
     ],
 
     /*

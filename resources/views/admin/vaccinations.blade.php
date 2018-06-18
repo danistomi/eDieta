@@ -6,7 +6,7 @@
             <h1 class="h2">@lang('vaccination.vaccination_calendar')</h1>
         </div>
         <section>
-            <h3>Vaccination list</h3>
+            <h3>Zoznam očkovaní</h3>
             @if(!$vaccinations->isEmpty())
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
@@ -27,16 +27,16 @@
                                 </td>
                                 <td>{{ $vaccination->immunization }}</td>
                                 <td>{{ $vaccination->type }}</td>
-                                <td>{{ $vaccination->recommended }}</td>
+                                <td>@if($vaccination->recommended) Áno @else Nie @endif</td>
                                 <td>
                                     <button class="btn btn-primary mb-1"
                                             onclick="showVaccinationForm(this.parentNode, {{ $vaccination->id }})">
-                                        Edit
+                                        Upraviť
                                     </button>
                                     <form method="POST" action="/vacc/{{$vaccination->id}}">
                                         {{ csrf_field() }}
                                         {{method_field('DELETE')}}
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger">Zmazať</button>
                                     </form>
 
                                 </td>
@@ -49,7 +49,7 @@
             @endif
         </section>
         <section class="w-100">
-            <h3>Add new vaccination</h3>
+            <h3>Pridaj nové očkovanie</h3>
             @include('admin.new_vaccination_form')
         </section>
     </main>

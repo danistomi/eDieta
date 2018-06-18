@@ -34,6 +34,10 @@ class Child extends Model {
 		            ->withTimestamps();
 	}
 
+	public function parent() {
+		return $this->belongsTo( User::class, 'parent_id' );
+	}
+
 	/**
 	 * Get the bmi measurements for the child.
 	 */
@@ -59,7 +63,5 @@ class Child extends Model {
 		$diff     = $birthday->diff( new DateTime() );
 
 		return (int) ( $diff->format( '%m' ) ) + 12 * $diff->format( '%y' );
-
-
 	}
 }

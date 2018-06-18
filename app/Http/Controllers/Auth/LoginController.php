@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class LoginController extends Controller {
 	/*
@@ -42,7 +43,7 @@ class LoginController extends Controller {
 		if ( ! $user->verified ) {
 			auth()->logout();
 
-			return back()->with( 'warning', 'You need to confirm your account. We have sent you an activation code, please check your email.' );
+			return back()->with( 'warning', Lang::get( 'auth.confirm_request' ) );
 		}
 
 		return redirect()->intended( $this->redirectPath() );

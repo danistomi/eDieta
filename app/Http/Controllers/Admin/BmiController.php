@@ -54,6 +54,15 @@ class BmiController extends Controller {
 	public function destroy( $fileId ) {
 		$file = DB::table( 'bmi_files' )->where( 'id', $fileId )->first();
 
+		$bmiArray = $this->getBmiDataFromFile( $file );
+		foreach ( $bmiArray as $months => $dataArray ) {
+			foreach ( $dataArray as $percentile => $bmi ) {
+				DefaultBmi::where(
+					[ 'age' => $months, 'gender' => $file->gender, 'percentile' => $percentile, 'bmi' => $bmi ]
+				)->delete();
+			}
+		}
+
 		Storage::delete( $file->storage_file_name );
 
 		DB::table( 'bmi_files' )->where( 'id', $fileId )->delete();

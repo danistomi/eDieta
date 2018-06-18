@@ -73,11 +73,22 @@ class HomeController extends Controller {
 		$selectedChild = $selectedChild->first();
 		$section       = 'bmi';
 		$bmis          = Child::find( $childId )->bmis()->orderBy( 'created_at', 'ASC' )->get();
-		$defaultBmis   = DefaultBmi::where( 'age', '<=', $selectedChild->ageInMonths() );
+		$defaultBmis   = DefaultBmi::where( [
+			[ 'age', '<=', $selectedChild->ageInMonths() ],
+			'gender' => $selectedChild->gender
+		] )->orderBy( 'age', 'ASC' )->get();
 		$bmiChartData  = array();
 		foreach ( $bmis as $bmi ) {
 			array_push( $bmiChartData, [ 'age' => $bmi->childAge, 'bmi' => $bmi->bmi ] );
 		}
+		$defaultBmiChartData = array();
+		foreach ( $defaultBmis as $bmi ) {
+			array_push( $defaultBmiChartData, [
+				'age'        => $bmi->age,
+				'bmi'        => $bmi->bmi,
+				'percentile' => $bmi->percentile
+			] );
+		};
 
 		$bmis = Child::find( $childId )->bmis()->orderBy( 'created_at', 'DESC' )->paginate( 10 );
 
@@ -86,7 +97,8 @@ class HomeController extends Controller {
 			'selectedChild',
 			'section',
 			'bmis',
-			'bmiChartData'
+			'bmiChartData',
+			'defaultBmiChartData'
 		] ) );
 	}
 

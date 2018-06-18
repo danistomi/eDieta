@@ -19,5 +19,6 @@ return [
 	'already_verified_mail' => 'Vaše mail už bola overená. Môzete prihlásiť.',
 	'error_identify_mail'   => 'Nevedeli sme identifikovať Váš mail.',
 	'sent_mail'             => 'Na Vaše mail sme poslali kód na overenie.',
+	'confirm_request'       => 'Vaše konto musí byť overená. Poslali sme aktivačný kód, pozeite si Vaše maili.',
 
 ];

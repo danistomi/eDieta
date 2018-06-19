@@ -3,7 +3,9 @@
 @section('section')
     <div class=" col-md-12 mt-3">
         <h3>@lang('bmi.bmi')</h3>
-        <canvas id="bmiChart" class="my-3" width="900" height="380"></canvas>
+        @if($bmis->count() >=2)
+            <canvas id="bmiChart" class="my-3" width="900" height="380"></canvas>
+        @endif
         <h4 class="my-3">Pridaj</h4>
         <form method="post" action="{{ url('/bmi') }}">
             <div class="row mt-3">

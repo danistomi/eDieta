@@ -100,22 +100,24 @@ BmiChart.prototype.draw = function () {
         for (var i = 0; i < this.defaultBmis[key].length; i++) {
             var j = i > 0 ? i - 1 : 0;
             if (this.defaultBmis[key][j].age >= this.maxAge) continue;
-            drawDBmiChart(this.defaultBmis[key][j], this.defaultBmis[key][i], DEFAULTBMICOLOR[key]);
+            drawDBmiChart(this.defaultBmis[key][j], this.defaultBmis[key][i], DEFAULTBMICOLOR[key], false);
         }
     }
 
     for (var i = 0; i < this.childBmis.length; i++) {
         var j = i > 0 ? i - 1 : 0
-        drawDBmiChart(this.childBmis[j], this.childBmis[i], CHILDBMICOLOR);
+        drawDBmiChart(this.childBmis[j], this.childBmis[i], CHILDBMICOLOR, true);
     }
 
 
-    function drawDBmiChart(prevBmi, bmi, color) {
-        ctx.lineWidth = 4;
-        ctx.beginPath();
-        ctx.arc(x(bmi), y(bmi), 5, 0, 2 * Math.PI);
-        ctx.fillStyle = color;
-        ctx.fill();
+    function drawDBmiChart(prevBmi, bmi, color, drawCircle) {
+        if (drawCircle) {
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.arc(x(bmi), y(bmi), 5, 0, 2 * Math.PI);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
 
         ctx.beginPath();
         ctx.moveTo(x(prevBmi), y(prevBmi));

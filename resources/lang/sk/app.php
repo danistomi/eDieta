@@ -11,6 +11,6 @@ return [
 	'new_child'   => 'Nové dieťa',
 	'confirm'     => "Súhlasím s <a href=\" :url \">použitím osobných údajov</a>",
 	'my_patients' => 'Moje pacienti',
-	'my_doctors'  => 'Moje lekáry',
+	'my_doctors'  => 'Moje lekári',
 	'my_children' => 'Moje deti',
 ];
